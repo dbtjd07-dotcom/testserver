@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마인크래프트 서버 공식 홈페이지</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- 상단 메뉴 -->
+    <header>
+        <div class="logo">🎮 OUR MINECRAFT SERVER</div>
+        <nav>
+            <a href="#">홈</a>
+            <a href="#">서버 규칙</a>
+            <a href="#">공지사항</a>
+            <a href="#">상점</a>
+        </nav>
+    </header>
+
+    <!-- 대문 배너 -->
+    <div class="hero">
+        <h1>야생 & 힐링 마인크래프트 서버</h1>
+        <p>함께 소통하고 건축하며 즐길 수 있는 최고의 공간입니다.</p>
+        <div class="server-ip">서버 주소: play.example.com</div>
+    </div>
+
+    <!-- 컨텐츠 영역 -->
+    <div class="container">
+        <!-- 왼쪽: 공지사항 -->
+        <div class="section-box">
+            <h3>📢 서버 최신 공지사항</h3>
+            <p>1. 싸우지 말고 매너 플레이 해주세요!</p>
+            <p>2. 불법 프로그램(핵, 매크로 등) 사용 시 영구 차단됩니다.</p>
+        </div>
+
+        <!-- 오른쪽: 프로필 관리 (Firebase 연동) -->
+        <div class="section-box profile-card">
+            <h3>👤 플레이어 프로필</h3>
+            <div id="viewArea">
+                <p><strong>닉네임:</strong> <span id="viewName">불러오는 중...</span></p>
+                <p><strong>역할:</strong> <span id="viewRole">불러오는 중...</span></p>
+                <p><strong>소개:</strong> <span id="viewBio">불러오는 중...</span></p>
+            </div>
+            
+            <hr class="divider">
+
+            <div id="editArea">
+                <input type="text" id="inputName" placeholder="닉네임">
+                <input type="text" id="inputRole" placeholder="역할 (예: 유저, 빌더)">
+                <input type="text" id="inputBio" placeholder="한줄소개">
+                <button id="saveBtn">프로필 저장하기</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 메인 자바스크립트 연결 -->
+    <script type="module" src="app.js"></script>
+</body>
+</html>
