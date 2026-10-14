@@ -214,8 +214,13 @@
             align-items: center;
         }
 
+        /* 스타팅 포켓몬 이미지 배지 디자인 */
         .starter-badge {
-            color: #ffcb05; font-size: 0.78rem; font-weight: bold; display: flex; align-items: center; gap: 4px;
+            color: #ffcb05; font-size: 0.8rem; font-weight: bold; display: flex; align-items: center; gap: 5px;
+            background: rgba(255, 203, 5, 0.1); padding: 3px 8px; border-radius: 6px; border: 1px solid rgba(255, 203, 5, 0.2);
+        }
+        .starter-badge img {
+            width: 22px; height: 22px; object-fit: contain;
         }
 
         /* Commands, Rules, Locations Cards */
@@ -390,7 +395,7 @@
         </div>
     </div>
 
-    <!-- 상세 프로필 모달 ("프로필" 명칭 반영) -->
+    <!-- 상세 프로필 모달 -->
     <div class="modal" id="detailModal">
         <div class="modal-content">
             <div class="modal-header">
@@ -404,7 +409,6 @@
                 </div>
             </div>
 
-            <!-- 스타팅 포켓몬 배지 표시 영역 -->
             <div id="detailStarter" style="margin-bottom: 12px; display:none;"></div>
 
             <div id="detailList" style="max-height: 380px; overflow-y: auto;"></div>
@@ -433,7 +437,7 @@
 
                 <div class="input-group">
                     <label>스타팅 포켓몬 선택/입력</label>
-                    <input type="text" id="editStarter" class="form-input" placeholder="예: 파이리, 이상해씨, 꼬부기, 피카츄 등">
+                    <input type="text" id="editStarter" class="form-input" placeholder="예: 브케인, 파이리, 이상해씨, 꼬부기, 피카츄 등">
                 </div>
 
                 <div class="input-group">
@@ -480,28 +484,29 @@
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
 
-        // 성 제외한 이름 6명
         const members = ["민규", "영재", "주환", "유성", "세훈", "승기"];
         let currentMember = "";
         let currentPokemonList = [];
         let currentMemberData = {};
         let selectedTheme = "yellow-red";
 
-        // 포켓몬 한글 이름 <-> 도감 번호 매핑 (공식 이미지 자동 불러오기용)
+        // 🔥 보강된 포켓몬 한글 이름 <-> 도감 번호 매핑 (브케인 155번 추가!) 🔥
         const pokeNumMap = {
             "이상해씨":1, "이상해풀":2, "이상해꽃":3, "파이리":4, "리자드":5, "리자몽":6,
             "꼬부기":7, "어니부기":8, "거북왕":9, "캐터피":10, "단데기":11, "버터플":12,
             "피카츄":25, "라이츄":26, "푸린":39, "고라파덕":54, "팬텀":94, "잉어킹":129, "갸라도스":130,
-            "메타몽":132, "이브이":133, "잠만보":143, "프리져":144, "썬더":145, "파이어":146,
-            "망나뇽":149, "뮤츠":150, "뮤":151, "세레비":251, "레시라무":643, "제크로무":644, "아르세우스":493
+            "메타몽":132, "이브이":133, "브케인":155, "마그케인":156, "블레이범":157, "리아코":158, "치코리타":152,
+            "나무지기":252, "아차모":255, "물짱이":258, "모부기":387, "불꽃숭이":390, "팽도리":393,
+            "잠만보":143, "망나뇽":149, "뮤츠":150, "뮤":151, "세레비":251, "아르세우스":493
         };
 
         function getPokeImgUrl(name) {
-            const num = pokeNumMap[name.trim()];
+            if (!name) return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png`;
+            const cleanName = name.trim();
+            const num = pokeNumMap[cleanName];
             if (num) {
                 return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${num}.png`;
             }
-            // 매핑 데이터에 없는 포켓몬은 기본 몬스터볼 이미지
             return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png`;
         }
 
@@ -602,7 +607,11 @@
                         </div>
                         <div class="card-preview">
                             <span>${pokemonData.length > 0 ? `대표: ${pokemonData[0].name} (Lv.${pokemonData[0].level})` : '포켓몬 없음'}</span>
-                            ${starter ? `<span class="starter-badge"><i class="fa-solid fa-star"></i> ${starter}</span>` : ''}
+                            ${starter ? `
+                                <div class="starter-badge">
+                                    <img src="${getPokeImgUrl(starter)}" alt="${starter}" onerror="this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png'">
+                                    <span>${starter}</span>
+                                </div>` : ''}
                         </div>
                     `;
                     return card;
@@ -619,14 +628,17 @@
             currentMember = name;
             currentPokemonList = pokemonList;
             
-            // 🔥 '프로필'로 명칭 변경 🔥
             document.getElementById("detailTitle").innerText = `${name}님의 프로필`;
             document.getElementById("detailMcName").innerText = mcName ? `@${mcName}` : '';
             
             const starterDiv = document.getElementById("detailStarter");
             if (starter) {
                 starterDiv.style.display = "block";
-                starterDiv.innerHTML = `<span style="background:rgba(255, 203, 5, 0.15); border:1px solid #ffcb05; color:#ffcb05; padding:4px 12px; border-radius:20px; font-size:0.82rem; font-weight:bold;"><i class="fa-solid fa-star"></i> 스타팅 포켓몬: ${starter}</span>`;
+                starterDiv.innerHTML = `
+                    <div style="display:inline-flex; align-items:center; gap:8px; background:rgba(255, 203, 5, 0.15); border:1px solid #ffcb05; color:#ffcb05; padding:6px 14px; border-radius:20px; font-size:0.85rem; font-weight:bold;">
+                        <img src="${getPokeImgUrl(starter)}" style="width:24px; height:24px; object-fit:contain;" alt="${starter}">
+                        <span>스타팅 포켓몬: ${starter}</span>
+                    </div>`;
             } else {
                 starterDiv.style.display = "none";
             }
