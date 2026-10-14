@@ -11,7 +11,7 @@
         * { box-sizing: border-box; }
         body {
             font-family: 'Noto Sans KR', sans-serif;
-            background: #0f1015;
+            background: #0d0f14;
             color: #f0f2f5;
             margin: 0;
             padding: 0;
@@ -20,8 +20,8 @@
 
         /* Header */
         header {
-            background: rgba(22, 24, 31, 0.95);
-            backdrop-filter: blur(10px);
+            background: rgba(18, 20, 29, 0.95);
+            backdrop-filter: blur(12px);
             border-bottom: 2px solid #e3350d;
             padding: 18px 20px 0 20px;
             position: sticky;
@@ -36,8 +36,9 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 12px;
             font-weight: 900;
+            letter-spacing: -0.5px;
         }
         .pokeball-icon {
             width: 28px; height: 28px;
@@ -45,7 +46,7 @@
             border-radius: 50%;
             border: 2px solid #000;
             position: relative;
-            box-shadow: 0 0 10px rgba(227, 53, 13, 0.5);
+            box-shadow: 0 0 12px rgba(227, 53, 13, 0.6);
             animation: spin 6s linear infinite;
         }
         .pokeball-icon::after {
@@ -64,21 +65,21 @@
         .nav-tabs {
             display: flex;
             justify-content: center;
-            gap: 6px;
+            gap: 8px;
             max-width: 1200px;
             margin: 0 auto;
             overflow-x: auto;
         }
         .tab-btn {
             background: transparent;
-            color: #9095a0;
+            color: #8c93a4;
             border: none;
-            padding: 12px 18px;
+            padding: 12px 20px;
             font-size: 0.95rem;
             font-weight: 700;
             cursor: pointer;
             border-bottom: 3px solid transparent;
-            transition: all 0.2s;
+            transition: all 0.25s;
             display: flex;
             align-items: center;
             gap: 8px;
@@ -88,19 +89,19 @@
         .tab-btn.active {
             color: #ffcb05;
             border-bottom-color: #ffcb05;
-            text-shadow: 0 0 8px rgba(255, 203, 5, 0.3);
+            text-shadow: 0 0 10px rgba(255, 203, 5, 0.4);
         }
 
-        /* Container */
-        .main-container { max-width: 1200px; margin: 25px auto; padding: 0 20px; }
+        /* Main Layout */
+        .main-container { max-width: 1200px; margin: 25px auto; padding: 0 20px 40px 20px; }
         .tab-content { display: none; }
         .tab-content.active { display: block; }
 
-        /* Banner */
+        /* Hero Banner */
         .hero-banner {
-            background: linear-gradient(135deg, rgba(227, 53, 13, 0.15) 0%, rgba(255, 203, 5, 0.1) 100%), #171920;
-            border: 1px solid rgba(227, 53, 13, 0.3);
-            border-radius: 16px;
+            background: linear-gradient(135deg, rgba(227, 53, 13, 0.18) 0%, rgba(255, 203, 5, 0.12) 100%), #141722;
+            border: 1px solid rgba(227, 53, 13, 0.35);
+            border-radius: 18px;
             padding: 24px 30px;
             margin-bottom: 25px;
             display: flex;
@@ -108,222 +109,318 @@
             align-items: center;
             flex-wrap: wrap;
             gap: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
         }
-        .hero-text h2 { margin: 0 0 8px 0; color: #ffffff; font-size: 1.5rem; font-weight: 800; }
-        .hero-text p { margin: 0; color: #a0a5b1; font-size: 0.9rem; }
+        .hero-text h2 { margin: 0 0 6px 0; color: #ffffff; font-size: 1.55rem; font-weight: 800; }
+        .hero-text p { margin: 0; color: #9aa1b1; font-size: 0.9rem; }
         .stat-badges { display: flex; gap: 12px; }
         .stat-card {
-            background: #0f1015;
-            border: 1px solid #2a2e39;
-            border-radius: 10px;
-            padding: 10px 18px;
+            background: #0d0f14;
+            border: 1px solid #232736;
+            border-radius: 12px;
+            padding: 10px 20px;
             text-align: center;
-            min-width: 100px;
+            min-width: 105px;
         }
-        .stat-card .num { font-size: 1.3rem; font-weight: 900; color: #ffcb05; }
-        .stat-card .label { font-size: 0.78rem; color: #808592; }
+        .stat-card .num { font-size: 1.35rem; font-weight: 900; color: #ffcb05; }
+        .stat-card .label { font-size: 0.78rem; color: #7f8698; margin-top: 2px; }
 
         /* Quick Grid */
         .quick-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 16px;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
         }
         .quick-card {
-            background: #171920;
-            border: 1px solid #282c37;
-            border-radius: 12px;
+            background: #141722;
+            border: 1px solid #232736;
+            border-radius: 14px;
             padding: 18px;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.25s ease;
         }
         .quick-card:hover {
             border-color: #ffcb05;
             transform: translateY(-3px);
-            box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
         }
-        .quick-card h3 { margin: 0 0 8px 0; color: #fff; display: flex; align-items: center; gap: 8px; font-size: 1.05rem; }
-        .quick-card p { margin: 0; color: #8a8f9d; font-size: 0.85rem; }
+        .quick-card h3 { margin: 0 0 8px 0; color: #fff; display: flex; align-items: center; gap: 10px; font-size: 1.05rem; }
+        .quick-card p { margin: 0; color: #888f9e; font-size: 0.85rem; }
 
-        /* Section Title */
-        .section-title { color: #ffffff; font-size: 1.25rem; margin: 25px 0 15px 0; display: flex; align-items: center; gap: 10px; font-weight: 800; }
+        /* Section Header */
+        .section-title {
+            color: #ffffff; font-size: 1.3rem; margin: 30px 0 16px 0;
+            display: flex; align-items: center; gap: 10px; font-weight: 800;
+        }
 
-        /* Profiles Grid */
+        /* Profile Cards Grid */
         .profile-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 18px;
+            gap: 20px;
         }
         
         .profile-card {
-            background: #171920;
-            border: 1px solid #282c37;
-            border-radius: 14px;
-            padding: 18px;
+            background: #141722;
+            border: 1px solid #232736;
+            border-radius: 16px;
+            padding: 20px;
             cursor: pointer;
-            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
             overflow: hidden;
         }
         .profile-card-line {
             position: absolute;
-            top: 0; left: 0; width: 5px; height: 100%;
+            top: 0; left: 0; width: 6px; height: 100%;
         }
         .profile-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-6px);
             border-color: var(--theme-color, #ffcb05);
-            box-shadow: 0 0 18px var(--theme-shadow, rgba(255, 203, 5, 0.35));
+            box-shadow: 0 10px 25px var(--theme-shadow, rgba(255, 203, 5, 0.3));
         }
         
         .card-header {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 12px;
+            margin-bottom: 14px;
         }
         .user-info { display: flex; align-items: center; gap: 12px; }
         .avatar {
-            width: 42px; height: 42px;
+            width: 46px; height: 46px;
             background: var(--theme-gradient, linear-gradient(135deg, #e3350d, #ffcb05));
             border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
-            font-weight: 900; color: #111; font-size: 1.15rem;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+            font-weight: 900; color: #111; font-size: 1.25rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
         }
-        .user-name { font-size: 1.1rem; font-weight: 800; color: white; }
-        .mc-name { font-size: 0.78rem; color: #23a55a; font-weight: bold; margin-top: 2px; }
+        .user-name { font-size: 1.15rem; font-weight: 800; color: white; }
+        .mc-name { font-size: 0.8rem; color: #23a55a; font-weight: 700; margin-top: 2px; }
         .poke-badge {
             font-size: 0.8rem;
             color: var(--theme-color, #ffcb05);
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--theme-color, #ffcb05);
-            padding: 3px 10px;
+            padding: 4px 12px;
             border-radius: 20px;
-            font-weight: 700;
+            font-weight: 800;
         }
+
         .card-preview {
-            background: #0f1015;
-            padding: 10px 12px;
-            border-radius: 8px;
+            background: #0d0f14;
+            padding: 12px 14px;
+            border-radius: 12px;
             color: #a0a5b1;
-            font-size: 0.85rem;
-            border: 1px solid #222631;
+            font-size: 0.88rem;
+            border: 1px solid #1e2230;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        /* 스타팅 포켓몬 이미지 배지 디자인 */
         .starter-badge {
-            color: #ffcb05; font-size: 0.8rem; font-weight: bold; display: flex; align-items: center; gap: 5px;
-            background: rgba(255, 203, 5, 0.1); padding: 3px 8px; border-radius: 6px; border: 1px solid rgba(255, 203, 5, 0.2);
+            color: #ffcb05; font-size: 0.82rem; font-weight: bold; display: flex; align-items: center; gap: 6px;
+            background: rgba(255, 203, 5, 0.12); padding: 4px 10px; border-radius: 8px; border: 1px solid rgba(255, 203, 5, 0.25);
         }
         .starter-badge img {
-            width: 22px; height: 22px; object-fit: contain;
+            width: 26px; height: 26px; object-fit: contain; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4));
         }
 
         /* Commands, Rules, Locations Cards */
-        .cmd-grid, .rules-list, .location-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; }
-        .cmd-card, .rule-card, .location-card { background: #171920; border: 1px solid #282c37; border-radius: 12px; padding: 16px; }
+        .cmd-grid, .rules-list, .location-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+        .cmd-card, .rule-card, .location-card { background: #141722; border: 1px solid #232736; border-radius: 14px; padding: 18px; }
         .cmd-code {
-            background: #0f1015; color: #ffcb05; padding: 10px 12px; border-radius: 8px;
-            font-family: monospace; font-size: 0.9rem; display: flex; justify-content: space-between; align-items: center;
-            border: 1px solid #222631; margin-bottom: 8px;
+            background: #0d0f14; color: #ffcb05; padding: 10px 14px; border-radius: 8px;
+            font-family: monospace; font-size: 0.92rem; display: flex; justify-content: space-between; align-items: center;
+            border: 1px solid #1e2230; margin-bottom: 8px; font-weight: 600;
         }
         .rule-card { border-left: 4px solid #e3350d; }
-        .rule-card i { color: #e3350d; font-size: 1.2rem; }
-        .loc-coords { color: #23a55a; font-family: monospace; font-weight: bold; }
-        .copy-btn { background: none; border: none; color: #808592; cursor: pointer; transition: color 0.2s; }
+        .rule-card i { color: #e3350d; font-size: 1.25rem; }
+        .loc-coords { color: #23a55a; font-family: monospace; font-weight: bold; font-size: 1rem; margin-top: 4px; }
+        .copy-btn { background: none; border: none; color: #7f8698; cursor: pointer; transition: color 0.2s; font-size: 0.9rem; }
         .copy-btn:hover { color: #fff; }
 
-        /* MODAL STYLES */
+        /* MODALS */
         .modal {
             display: none;
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(6px);
+            background: rgba(5, 6, 9, 0.85);
+            backdrop-filter: blur(8px);
             justify-content: center;
             align-items: center;
             z-index: 1000;
+            padding: 20px;
         }
         .modal-content {
-            background: #171920;
-            padding: 26px;
-            border-radius: 16px;
-            width: 95%;
-            max-width: 620px;
-            border: 1px solid #2d3240;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+            background: #141722;
+            padding: 28px;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 680px;
+            border: 1px solid #2a2f42;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+            max-height: 90vh;
+            overflow-y: auto;
         }
         .modal-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid #282c37;
-            padding-bottom: 14px;
-            margin-bottom: 18px;
+            border-bottom: 1px solid #232736;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
         }
-        .modal-header h3 { margin: 0; color: white; font-size: 1.2rem; font-weight: 800; }
+        .modal-header h3 { margin: 0; color: white; font-size: 1.35rem; font-weight: 900; }
         
         .header-actions { display: flex; align-items: center; gap: 10px; }
         .btn-mini-edit {
-            background: #252833; color: #b0b5c0; border: 1px solid #3b4050; padding: 6px 12px;
-            border-radius: 6px; font-size: 0.82rem; font-weight: 700; cursor: pointer; transition: all 0.2s;
+            background: #1e2230; color: #b0b6c6; border: 1px solid #32384d; padding: 7px 14px;
+            border-radius: 8px; font-size: 0.85rem; font-weight: 700; cursor: pointer; transition: all 0.2s;
             display: flex; align-items: center; gap: 6px;
         }
         .btn-mini-edit:hover { background: #e3350d; color: #fff; border-color: #e3350d; }
-        .close-btn { background: none; border: none; color: #808592; font-size: 1.3rem; cursor: pointer; }
+        .close-btn { background: none; border: none; color: #7f8698; font-size: 1.4rem; cursor: pointer; transition: color 0.2s; }
+        .close-btn:hover { color: #fff; }
 
-        .poke-detail-item {
-            background: #0f1015; padding: 10px 16px; border-radius: 8px; display: flex;
-            justify-content: space-between; align-items: center; margin-bottom: 8px; border: 1px solid #222631;
+        /* NEW PROFILE CARD MODAL STYLING (프로필형 하이라이트) */
+        .hero-profile-card {
+            background: linear-gradient(135deg, rgba(30, 34, 48, 0.9), rgba(15, 17, 24, 0.95));
+            border: 1px solid #2a2f42;
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.3);
         }
-        .poke-info-left {
-            display: flex; align-items: center; gap: 12px;
+        .hero-profile-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            z-index: 2;
         }
-        .poke-img {
-            width: 45px; height: 45px; object-fit: contain;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+        .hero-avatar {
+            width: 60px; height: 60px;
+            background: linear-gradient(135deg, #e3350d, #ffcb05);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.7rem; font-weight: 900; color: #111;
+            box-shadow: 0 4px 15px rgba(227, 53, 13, 0.4);
         }
-        .poke-detail-item .level {
-            background: rgba(227, 53, 13, 0.15); color: #e3350d; border: 1px solid rgba(227, 53, 13, 0.3);
-            padding: 3px 10px; border-radius: 12px; font-weight: 800; font-size: 0.85rem;
+        .hero-user-details h2 { margin: 0; font-size: 1.4rem; color: #fff; font-weight: 800; }
+        .hero-user-details .mc-tag { color: #23a55a; font-weight: bold; font-size: 0.9rem; margin-top: 2px; }
+        
+        .hero-starter-box {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            background: rgba(255, 203, 5, 0.08);
+            border: 1px solid rgba(255, 203, 5, 0.25);
+            padding: 10px 18px;
+            border-radius: 14px;
+            z-index: 2;
+        }
+        .hero-starter-img {
+            width: 75px; height: 75px;
+            object-fit: contain;
+            filter: drop-shadow(0 6px 12px rgba(0,0,0,0.5));
+            animation: floatPoke 3s ease-in-out infinite;
+        }
+        @keyframes floatPoke {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+        .hero-starter-info { text-align: right; }
+        .hero-starter-info .label { font-size: 0.75rem; color: #ffcb05; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; }
+        .hero-starter-info .name { font-size: 1.15rem; color: #ffffff; font-weight: 900; margin-top: 2px; }
+
+        /* POKEMON GRID DISPLAY (도감 대신 깔끔한 보유 포켓몬 프로필 카드리스트) */
+        .poke-gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+            gap: 14px;
+        }
+        .poke-showcase-card {
+            background: #0d0f14;
+            border: 1px solid #232736;
+            border-radius: 14px;
+            padding: 16px;
+            text-align: center;
+            position: relative;
+            transition: transform 0.2s, border-color 0.2s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .poke-showcase-card:hover {
+            transform: translateY(-4px);
+            border-color: #ffcb05;
+        }
+        .poke-showcase-img {
+            width: 85px; height: 85px;
+            object-fit: contain;
+            margin-bottom: 10px;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.6));
+        }
+        .poke-showcase-name { font-weight: 800; color: #fff; font-size: 1rem; margin-bottom: 6px; }
+        .poke-showcase-lvl {
+            background: rgba(227, 53, 13, 0.15);
+            color: #e3350d;
+            border: 1px solid rgba(227, 53, 13, 0.3);
+            font-size: 0.78rem;
+            font-weight: 800;
+            padding: 2px 10px;
+            border-radius: 12px;
         }
 
-        .input-group { margin-bottom: 14px; }
-        .input-group label { display: block; color: #a0a5b1; font-size: 0.82rem; font-weight: bold; margin-bottom: 6px; }
+        /* Edit Form Styles */
+        .input-group { margin-bottom: 16px; }
+        .input-group label { display: block; color: #9aa1b1; font-size: 0.85rem; font-weight: bold; margin-bottom: 8px; }
         .form-input {
-            width: 100%; background: #0f1015; border: 1px solid #2d3240; color: white; padding: 10px 12px;
-            border-radius: 6px; font-size: 0.9rem; outline: none;
+            width: 100%; background: #0d0f14; border: 1px solid #2a2f42; color: white; padding: 12px 14px;
+            border-radius: 8px; font-size: 0.92rem; outline: none; transition: border-color 0.2s;
         }
         .form-input:focus { border-color: #ffcb05; }
 
         .edit-poke-row { display: flex; gap: 10px; margin-bottom: 10px; align-items: center; }
         .edit-poke-row input {
-            background: #0f1015; border: 1px solid #2d3240; color: white; padding: 10px;
-            border-radius: 6px; font-size: 0.9rem; outline: none;
+            background: #0d0f14; border: 1px solid #2a2f42; color: white; padding: 10px 12px;
+            border-radius: 8px; font-size: 0.9rem; outline: none;
         }
         .edit-poke-row input:focus { border-color: #ffcb05; }
 
-        .color-picker { display: flex; gap: 10px; margin-top: 6px; }
+        .color-picker { display: flex; gap: 12px; margin-top: 8px; }
         .color-option {
-            width: 32px; height: 32px; border-radius: 50%; cursor: pointer; border: 2px solid transparent;
+            width: 34px; height: 34px; border-radius: 50%; cursor: pointer; border: 2px solid transparent;
             transition: transform 0.2s;
         }
         .color-option:hover { transform: scale(1.15); }
-        .color-option.selected { border-color: #ffffff; box-shadow: 0 0 8px rgba(255,255,255,0.8); }
+        .color-option.selected { border-color: #ffffff; box-shadow: 0 0 10px rgba(255,255,255,0.8); }
 
         .btn-action {
-            width: 100%; padding: 12px; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; margin-top: 15px; font-size: 0.95rem;
+            width: 100%; padding: 13px; border: none; border-radius: 8px; font-weight: 800; cursor: pointer; margin-top: 15px; font-size: 0.98rem; transition: background 0.2s;
         }
         .btn-save { background: #23a55a; color: white; }
-        .btn-del { background: #da373c; color: white; border: none; padding: 10px 14px; border-radius: 6px; cursor: pointer; }
+        .btn-save:hover { background: #1f9250; }
+        .btn-del { background: #da373c; color: white; border: none; padding: 10px 14px; border-radius: 8px; cursor: pointer; }
+        .btn-del:hover { background: #b82d32; }
+
+        @media (max-width: 600px) {
+            .hero-profile-card { flex-direction: column; align-items: flex-start; gap: 15px; }
+            .hero-starter-box { width: 100%; justify-content: space-between; }
+        }
     </style>
 </head>
 <body>
 
+    <!-- Header Navigation -->
     <header>
         <div class="header-title">
             <h1><div class="pokeball-icon"></div> 포켓몬 마크 서버</h1>
@@ -366,7 +463,7 @@
                 </div>
             </div>
 
-            <div class="section-title"><i class="fa-solid fa-users"></i> 멤버 프로필 (클릭하여 확인)</div>
+            <div class="section-title"><i class="fa-solid fa-users"></i> 멤버 프로필 (클릭하여 프로필 보기)</div>
             <div class="profile-grid" id="home-profile-container"></div>
         </div>
 
@@ -395,23 +492,41 @@
         </div>
     </div>
 
-    <!-- 상세 프로필 모달 -->
+    <!-- 플레이어 프로필 상세 모달 -->
     <div class="modal" id="detailModal">
         <div class="modal-content">
             <div class="modal-header">
-                <div>
-                    <h3 id="detailTitle" style="margin-bottom: 2px;">멤버 프로필</h3>
-                    <div id="detailMcName" style="color:#23a55a; font-size:0.85rem; font-weight:bold;"></div>
-                </div>
+                <h3>플레이어 프로필</h3>
                 <div class="header-actions">
                     <button class="btn-mini-edit" onclick="openAuthModal()"><i class="fa-solid fa-pen"></i> 프로필 수정</button>
                     <button class="close-btn" onclick="closeModal('detailModal')"><i class="fa-solid fa-xmark"></i></button>
                 </div>
             </div>
 
-            <div id="detailStarter" style="margin-bottom: 12px; display:none;"></div>
+            <!-- 프로필 하이라이트 카드로 대폭 개선 -->
+            <div class="hero-profile-card">
+                <div class="hero-profile-left">
+                    <div class="hero-avatar" id="modalAvatar">유</div>
+                    <div class="hero-user-details">
+                        <h2 id="modalUserName">유성</h2>
+                        <div class="mc-tag" id="modalMcName">@유성_MC</div>
+                    </div>
+                </div>
+                
+                <div class="hero-starter-box" id="modalStarterBox">
+                    <div class="hero-starter-info">
+                        <div class="label">⭐ 스타팅 포켓몬</div>
+                        <div class="name" id="modalStarterName">브케인</div>
+                    </div>
+                    <img class="hero-starter-img" id="modalStarterImg" src="" alt="스타팅" onerror="this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png'">
+                </div>
+            </div>
 
-            <div id="detailList" style="max-height: 380px; overflow-y: auto;"></div>
+            <div style="font-weight: 800; font-size: 1rem; color: #fff; margin-bottom: 14px; display: flex; align-items: center; gap: 8px;">
+                <i class="fa-solid fa-shield-cat" style="color: #ffcb05;"></i> 보유 포켓몬 파티
+            </div>
+
+            <div id="detailGallery" class="poke-gallery-grid"></div>
         </div>
     </div>
 
@@ -424,7 +539,7 @@
             </div>
             
             <div id="authSection">
-                <p style="color:#8a8f9d; font-size:0.85rem; margin-top:0;">수정 권한을 확인하기 위해 비밀번호를 입력하세요.</p>
+                <p style="color:#8a8f9d; font-size:0.88rem; margin-top:0;">수정 권한을 확인하기 위해 비밀번호를 입력하세요.</p>
                 <input type="password" id="inputPassword" class="form-input" placeholder="비밀번호 입력 (기본: 1234)">
                 <button class="btn-action btn-save" onclick="verifyPassword()">인증 확인</button>
             </div>
@@ -458,8 +573,8 @@
 
                 <div class="input-group" style="margin-top: 20px;">
                     <label>보유 포켓몬 및 레벨 수정</label>
-                    <div id="pokeEditList" style="max-height: 200px; overflow-y: auto;"></div>
-                    <button onclick="addPokeInput()" style="width:100%; background:none; border:1px dashed #23a55a; color:#23a55a; padding:10px; border-radius:6px; margin-top:8px; font-weight:bold; cursor:pointer;">+ 포켓몬 추가</button>
+                    <div id="pokeEditList" style="max-height: 220px; overflow-y: auto;"></div>
+                    <button onclick="addPokeInput()" style="width:100%; background:none; border:1px dashed #23a55a; color:#23a55a; padding:12px; border-radius:8px; margin-top:8px; font-weight:bold; cursor:pointer;">+ 포켓몬 추가</button>
                 </div>
 
                 <button class="btn-action btn-save" onclick="saveData()">최종 저장하기</button>
@@ -467,7 +582,7 @@
         </div>
     </div>
 
-    <!-- Firebase SDK -->
+    <!-- Firebase SDK & Script -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
         import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
@@ -490,14 +605,26 @@
         let currentMemberData = {};
         let selectedTheme = "yellow-red";
 
-        // 🔥 보강된 포켓몬 한글 이름 <-> 도감 번호 매핑 (브케인 155번 추가!) 🔥
+        // 🔥 1~9세대 스타팅 및 인기/전설 포켓몬 한글 도감 매핑 🔥
         const pokeNumMap = {
             "이상해씨":1, "이상해풀":2, "이상해꽃":3, "파이리":4, "리자드":5, "리자몽":6,
             "꼬부기":7, "어니부기":8, "거북왕":9, "캐터피":10, "단데기":11, "버터플":12,
             "피카츄":25, "라이츄":26, "푸린":39, "고라파덕":54, "팬텀":94, "잉어킹":129, "갸라도스":130,
-            "메타몽":132, "이브이":133, "브케인":155, "마그케인":156, "블레이범":157, "리아코":158, "치코리타":152,
-            "나무지기":252, "아차모":255, "물짱이":258, "모부기":387, "불꽃숭이":390, "팽도리":393,
-            "잠만보":143, "망나뇽":149, "뮤츠":150, "뮤":151, "세레비":251, "아르세우스":493
+            "메타몽":132, "이브이":133, "치코리타":152, "베이리프":153, "메가니움":154,
+            "브케인":155, "마그케인":156, "블레이범":157, "리아코":158, "엘리게이":159, "장크로다일":160,
+            "나무지기":252, "나무돌이":253, "나무킹":254, "아차모":255, "영치코":256, "번치코":257,
+            "물짱이":258, "늪짱이":259, "대짱이":260, "모부기":387, "파이숭이":388, "토대부기":389,
+            "불꽃숭이":390, "파이숭이":391, "초염몽":392, "팽도리":393, "팽태자":394, "엠페르트":395,
+            "주리비얀":495, "샤비":496, "샤로다":497, "뚜꾸리":498, "차오꿀":499, "염무왕":500,
+            "수댕이":501, "쌍검자비":502, "대검귀":503, "도치마론":650, "도치보구":651, "브리가론":652,
+            "푸호꼬":653, "테르나":654, "마포시":655, "개구마르":656, "개굴반장":657, "개굴닌자":658,
+            "나몰라빼미":722, "빼미뜨르":723, "모크나이퍼":724, "냐오불":725, "냐오히트":726, "어흥염":727,
+            "누리공":728, "키요공":729, "누리레느":730, "흥나숭":810, "채키몽":811, "고릴타":812,
+            "염버니":813, "비트런":814, "에이스번":815, "울머기":816, "누겔레온":817, "인텔리레온":818,
+            "냐오하":906, "나로테":907, "마스카나":908, "뜨아거":909, "악뜨거":910, "라우드본":911,
+            "꾸왁스":912, "아쿠카모":913, "웨이니발":914, "잠만보":143, "망나뇽":149, "뮤츠":150, "뮤":151,
+            "루기아":249, "칠색조":250, "세레비":251, "레쿠쟈":384, "디아루가":483, "펄기아":484,
+            "기라티나":487, "아르세우스":493
         };
 
         function getPokeImgUrl(name) {
@@ -624,36 +751,37 @@
             document.getElementById("total-poke-count").innerText = `${totalPokes}마리`;
         }
 
+        /* 🌟 화려한 프로필형 모달 출력 함수 🌟 */
         window.openDetailModal = function(name, pokemonList, mcName, starter) {
             currentMember = name;
             currentPokemonList = pokemonList;
             
-            document.getElementById("detailTitle").innerText = `${name}님의 프로필`;
-            document.getElementById("detailMcName").innerText = mcName ? `@${mcName}` : '';
-            
-            const starterDiv = document.getElementById("detailStarter");
+            document.getElementById("modalAvatar").innerText = name.charAt(0);
+            document.getElementById("modalUserName").innerText = `${name}님의 프로필`;
+            document.getElementById("modalMcName").innerText = mcName ? `@${mcName}` : `@${name}_MC`;
+
+            const starterBox = document.getElementById("modalStarterBox");
             if (starter) {
-                starterDiv.style.display = "block";
-                starterDiv.innerHTML = `
-                    <div style="display:inline-flex; align-items:center; gap:8px; background:rgba(255, 203, 5, 0.15); border:1px solid #ffcb05; color:#ffcb05; padding:6px 14px; border-radius:20px; font-size:0.85rem; font-weight:bold;">
-                        <img src="${getPokeImgUrl(starter)}" style="width:24px; height:24px; object-fit:contain;" alt="${starter}">
-                        <span>스타팅 포켓몬: ${starter}</span>
-                    </div>`;
+                starterBox.style.display = "flex";
+                document.getElementById("modalStarterName").innerText = starter;
+                document.getElementById("modalStarterImg").src = getPokeImgUrl(starter);
             } else {
-                starterDiv.style.display = "none";
+                starterBox.style.display = "none";
             }
 
-            const listDiv = document.getElementById("detailList");
+            const galleryDiv = document.getElementById("detailGallery");
             if (pokemonList.length === 0) {
-                listDiv.innerHTML = `<p style="color:#8a8f9d; text-align:center; padding:30px 0;">등록된 포켓몬이 없습니다.</p>`;
+                galleryDiv.innerHTML = `
+                    <div style="grid-column: 1 / -1; text-align: center; padding: 35px 20px; background: #0d0f14; border-radius: 14px; border: 1px dashed #232736;">
+                        <i class="fa-solid fa-box-open" style="font-size: 2rem; color: #505668; margin-bottom: 10px;"></i>
+                        <p style="color: #7f8698; margin: 0;">등록된 파티 포켓몬이 없습니다.</p>
+                    </div>`;
             } else {
-                listDiv.innerHTML = pokemonList.map(p => `
-                    <div class="poke-detail-item">
-                        <div class="poke-info-left">
-                            <img class="poke-img" src="${getPokeImgUrl(p.name)}" alt="${p.name}" onerror="this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png'">
-                            <span style="font-weight:bold; color:white; font-size:0.95rem;">${p.name}</span>
-                        </div>
-                        <span class="level">Lv.${p.level}</span>
+                galleryDiv.innerHTML = pokemonList.map(p => `
+                    <div class="poke-showcase-card">
+                        <img class="poke-showcase-img" src="${getPokeImgUrl(p.name)}" alt="${p.name}" onerror="this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png'">
+                        <div class="poke-showcase-name">${p.name}</div>
+                        <span class="poke-showcase-lvl">Lv.${p.level}</span>
                     </div>
                 `).join('');
             }
@@ -772,7 +900,7 @@
                         <span>${c.cmd}</span>
                         <button class="copy-btn" onclick="copyText('${c.cmd}')"><i class="fa-regular fa-copy"></i></button>
                     </div>
-                    <div style="color:#a0a5b1; font-size:0.85rem;">${c.desc}</div>
+                    <div style="color:#8c93a4; font-size:0.88rem;">${c.desc}</div>
                 </div>
             `).join('');
         }
@@ -781,7 +909,7 @@
             document.getElementById("rules-container").innerHTML = rulesData.map(r => `
                 <div class="rule-card">
                     <i class="fa-solid fa-ban"></i>
-                    <div style="color:#fff; font-size:0.9rem;">${r}</div>
+                    <div style="color:#fff; font-size:0.92rem; font-weight:600;">${r}</div>
                 </div>
             `).join('');
         }
@@ -790,7 +918,7 @@
             document.getElementById("location-container").innerHTML = locationsData.map(l => `
                 <div class="location-card">
                     <div>
-                        <h4 style="margin:0 0 4px 0; color:#fff;">${l.name}</h4>
+                        <h4 style="margin:0 0 4px 0; color:#fff; font-size:1.05rem;">${l.name}</h4>
                         <div class="loc-coords">${l.coords}</div>
                     </div>
                     <button class="copy-btn" onclick="copyText('${l.coords}')"><i class="fa-regular fa-copy"></i> 복사</button>
