@@ -5,8 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>포켓몬 서버 프로필 관리</title>
     <style>
+        * {
+            box-sizing: border-box;
+        }
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #1e1f22;
             color: #dbdee1;
             margin: 0;
@@ -15,71 +18,115 @@
         h1 {
             text-align: center;
             color: #ffffff;
+            margin-bottom: 30px;
         }
         .container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 20px;
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
         }
         .profile-card {
             background-color: #2b2d31;
             border-radius: 8px;
             padding: 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
             position: relative;
+            display: flex;
+            flex-direction: column;
         }
-        .profile-card h2 {
-            margin-top: 0;
+        .profile-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #3f4147;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        .profile-header h2 {
+            margin: 0;
             color: #5865f2;
+            font-size: 1.4rem;
         }
         .edit-btn {
-            position: absolute;
-            top: 20px;
-            right: 20px;
             background-color: #5865f2;
             color: white;
             border: none;
-            padding: 5px 10px;
+            padding: 6px 12px;
             border-radius: 4px;
             cursor: pointer;
+            font-weight: bold;
+            transition: background 0.2s;
         }
         .edit-btn:hover {
             background-color: #4752c4;
         }
+        .pokemon-list {
+            flex-grow: 1;
+        }
         .pokemon-item {
             background: #313338;
-            padding: 8px 12px;
-            margin: 5px 0;
-            border-radius: 4px;
+            padding: 10px 14px;
+            margin: 6px 0;
+            border-radius: 6px;
             display: flex;
             justify-content: space-between;
+            align-items: center;
+            font-weight: 500;
         }
+        .pokemon-item .level {
+            background: #232428;
+            padding: 3px 8px;
+            border-radius: 12px;
+            color: #00a8fc;
+            font-size: 0.9rem;
+        }
+        .empty-msg {
+            color: #949ba4;
+            font-size: 0.95rem;
+            text-align: center;
+            margin: 20px 0;
+        }
+
         /* 모달 스타일 */
         .modal {
             display: none;
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.7);
+            background: rgba(0,0,0,0.75);
             justify-content: center;
             align-items: center;
+            z-index: 1000;
         }
         .modal-content {
             background: #313338;
             padding: 25px;
             border-radius: 8px;
-            width: 350px;
+            width: 90%;
+            max-width: 420px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
         }
-        .modal-content input {
+        .modal-content h3 {
+            margin-top: 0;
+            color: #ffffff;
+            margin-bottom: 15px;
+        }
+        .modal-content label {
+            display: block;
+            margin-bottom: 6px;
+            color: #b5bac1;
+            font-size: 0.9rem;
+        }
+        .modal-content input, .modal-content textarea {
             width: 100%;
-            padding: 8px;
-            margin: 8px 0 15px 0;
+            padding: 10px;
+            margin-bottom: 15px;
             background: #1e1f22;
             border: 1px solid #3f4147;
             color: white;
             border-radius: 4px;
+            font-family: inherit;
         }
         .modal-buttons {
             display: flex;
@@ -87,35 +134,53 @@
             gap: 10px;
         }
         .modal-buttons button {
-            padding: 6px 12px;
+            padding: 8px 16px;
             border: none;
             border-radius: 4px;
             cursor: pointer;
+            font-weight: bold;
         }
         .btn-cancel { background: #4e5058; color: white; }
+        .btn-cancel:hover { background: #6d6f78; }
         .btn-save { background: #248046; color: white; }
+        .btn-save:hover { background: #1a6334; }
+        .guide-text {
+            font-size: 0.8rem;
+            color: #949ba4;
+            margin-top: -10px;
+            margin-bottom: 15px;
+        }
     </style>
 </head>
 <body>
 
     <h1>포켓몬 서버 멤버 프로필</h1>
     <div class="container" id="profile-container">
-        <!-- 프로필 카드가 동적으로 생성됩니다 -->
+        <!-- 프로필 카드가 여기에 불러와집니다 -->
     </div>
 
     <!-- 수정 모달 -->
     <div class="modal" id="editModal">
         <div class="modal-content">
             <h3 id="modalTitle">프로필 수정</h3>
+            
+            <!-- 비밀번호 입력 섹션 -->
             <div id="authSection">
-                <label>비밀번호 입력</label>
+                <label for="inputPassword">비밀번호 입력</label>
                 <input type="password" id="inputPassword" placeholder="비밀번호를 입력하세요">
-                <button class="btn-save" onclick="verifyPassword()">확인</button>
+                <div class="modal-buttons">
+                    <button class="btn-cancel" onclick="closeModal()">취소</button>
+                    <button class="btn-save" onclick="verifyPassword()">확인</button>
+                </div>
             </div>
+
+            <!-- 프로필 편집 섹션 -->
             <div id="editSection" style="display:none;">
-                <label>포켓몬 및 레벨 수정 (예: 피카츄 Lv.50, 리자몽 Lv.60)</label>
-                <textarea id="inputPokemon" rows="4" style="width:100%; background:#1e1f22; color:white; border:1px solid #3f4147; border-radius:4px; padding:8px;"></textarea>
-                <div class="modal-buttons" style="margin-top:15px;">
+                <label for="inputPokemon">소유 포켓몬 및 레벨</label>
+                <textarea id="inputPokemon" rows="6" placeholder="피카츄, 50&#10;리자몽, 65&#10;뮤츠, 100"></textarea>
+                <div class="guide-text">※ 줄바꿈으로 구분하고 '포켓몬이름, 레벨' 형식으로 입력하세요.</div>
+                
+                <div class="modal-buttons">
                     <button class="btn-cancel" onclick="closeModal()">취소</button>
                     <button class="btn-save" onclick="saveData()">저장</button>
                 </div>
@@ -123,17 +188,17 @@
         </div>
     </div>
 
-    <!-- Firebase SDK 로드 -->
+    <!-- Firebase SDK 모듈 로드 -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-        import { getFirestore, collection, getDocs, doc, updateDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+        import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-        // TODO: 본인의 Firebase 프로젝트 설정값으로 변경하세요
+        // Firebase 설정 (본인의 키 값으로 교체해주세요)
         const firebaseConfig = {
             apiKey: "YOUR_API_KEY",
-            authDomain: "YOUR_AUTH_DOMAIN",
+            authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
             projectId: "YOUR_PROJECT_ID",
-            storageBucket: "YOUR_STORAGE_BUCKET",
+            storageBucket: "YOUR_PROJECT_ID.appspot.com",
             messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
             appId: "YOUR_APP_ID"
         };
@@ -144,33 +209,53 @@
         const members = ["김민규", "권영재", "김주환", "장유성", "정세훈", "한승기"];
         let currentEditingMember = "";
 
+        // 전체 프로필 카드 로드 함수
         window.loadProfiles = async function() {
             const container = document.getElementById("profile-container");
             container.innerHTML = "";
 
             for (const name of members) {
                 const docRef = doc(db, "profiles", name);
-                const docSnap = await getDoc(docRef);
-                
-                let pokemonData = [];
-                if (docSnap.exists()) {
-                    pokemonData = docSnap.data().pokemonList || [];
+                try {
+                    let docSnap = await getDoc(docRef);
+                    
+                    // DB에 인원별 문서가 없으면 기본 데이터(비밀번호: 1234)로 새로 생성
+                    if (!docSnap.exists()) {
+                        await setDoc(docRef, { password: "1234", pokemonList: [] });
+                        docSnap = await getDoc(docRef);
+                    }
+
+                    const data = docSnap.data();
+                    const pokemonData = data.pokemonList || [];
+
+                    let pokemonHtml = pokemonData.map(p => 
+                        `<div class="pokemon-item">
+                            <span>${p.name}</span>
+                            <span class="level">Lv.${p.level}</span>
+                        </div>`
+                    ).join('');
+
+                    if (pokemonData.length === 0) {
+                        pokemonHtml = `<div class="empty-msg">등록된 포켓몬이 없습니다.</div>`;
+                    }
+
+                    const card = document.createElement("div");
+                    card.className = "profile-card";
+                    card.innerHTML = `
+                        <div class="profile-header">
+                            <h2>${name}</h2>
+                            <button class="edit-btn" onclick="openEditModal('${name}')">수정</button>
+                        </div>
+                        <div class="pokemon-list">${pokemonHtml}</div>
+                    `;
+                    container.appendChild(card);
+                } catch (error) {
+                    console.error(`프로필 불러오기 오류 (${name}):`, error);
                 }
-
-                let pokemonHtml = pokemonData.map(p => `<div class="pokemon-item"><span>${p.name}</span><span>Lv.${p.level}</span></div>`).join('');
-                if(pokemonData.length === 0) pokemonHtml = "<p style='color:#949ba4;'>등록된 포켓몬이 없습니다.</p>";
-
-                const card = document.createElement("div");
-                card.className = "profile-card";
-                card.innerHTML = `
-                    <button class="edit-btn" onclick="openEditModal('${name}')">수정</button>
-                    <h2>${name}</h2>
-                    <div class="pokemon-list">${pokemonHtml}</div>
-                `;
-                container.appendChild(card);
             }
         }
 
+        // 모달 열기
         window.openEditModal = function(name) {
             currentEditingMember = name;
             document.getElementById("modalTitle").innerText = `${name} 프로필 수정`;
@@ -180,6 +265,7 @@
             document.getElementById("editModal").style.display = "flex";
         }
 
+        // 비밀번호 인증 검사
         window.verifyPassword = async function() {
             const pwd = document.getElementById("inputPassword").value;
             const docRef = doc(db, "profiles", currentEditingMember);
@@ -190,45 +276,45 @@
                 document.getElementById("editSection").style.display = "block";
                 
                 const list = docSnap.data().pokemonList || [];
-                // 텍스트 형태로 변환하여 textarea에 표시
+                // 기존 데이터를 줄바꿈 및 쉼표 형식 텍스트로 치환
                 document.getElementById("inputPokemon").value = list.map(p => `${p.name}, ${p.level}`).join('\n');
             } else {
-                alert("비밀번호가 틀렸습니다!");
+                alert("비밀번호가 일치하지 않습니다.");
             }
         }
 
+        // 데이터 저장 함수
         window.saveData = async function() {
             const rawText = document.getElementById("inputPokemon").value;
-            // 줄바꿈 단위로 분리하여 파싱 (형식: 포켓몬이름, 레벨)
             const lines = rawText.split('\n');
             const newPokemonList = [];
 
-            for(let line of lines) {
-                if(line.trim() === "") continue;
+            for (let line of lines) {
+                if (line.trim() === "") continue;
                 const parts = line.split(',');
-                if(parts.length >= 2) {
-                    newPokemonList.push({
-                        name: parts[0].trim(),
-                        level: Number(parts[1].trim())
-                    });
+                if (parts.length >= 2) {
+                    const name = parts[0].trim();
+                    const level = Number(parts[1].trim());
+                    if (name && !isNaN(level)) {
+                        newPokemonList.push({ name, level });
+                    }
                 }
             }
 
             const docRef = doc(db, "profiles", currentEditingMember);
-            await updateDoc(docRef, {
-                pokemonList: newPokemonList
-            });
+            await setDoc(docRef, { pokemonList: newPokemonList }, { merge: true });
 
-            alert("수정되었습니다!");
+            alert("성공적으로 저장되었습니다!");
             closeModal();
             loadProfiles();
         }
 
+        // 모달 닫기
         window.closeModal = function() {
             document.getElementById("editModal").style.display = "none";
         }
 
-        // 페이지 로드 시 프로필 불러오기
+        // 초기 실행
         loadProfiles();
     </script>
 </body>
