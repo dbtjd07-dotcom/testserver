@@ -3,59 +3,233 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>마인크래프트 서버 공식 홈페이지</title>
-    <link rel="stylesheet" href="style.css">
+    <title>포켓몬 서버 프로필 관리</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #1e1f22;
+            color: #dbdee1;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #ffffff;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .profile-card {
+            background-color: #2b2d31;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            position: relative;
+        }
+        .profile-card h2 {
+            margin-top: 0;
+            color: #5865f2;
+        }
+        .edit-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #5865f2;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .edit-btn:hover {
+            background-color: #4752c4;
+        }
+        .pokemon-item {
+            background: #313338;
+            padding: 8px 12px;
+            margin: 5px 0;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+        }
+        /* 모달 스타일 */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.7);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background: #313338;
+            padding: 25px;
+            border-radius: 8px;
+            width: 350px;
+        }
+        .modal-content input {
+            width: 100%;
+            padding: 8px;
+            margin: 8px 0 15px 0;
+            background: #1e1f22;
+            border: 1px solid #3f4147;
+            color: white;
+            border-radius: 4px;
+        }
+        .modal-buttons {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+        .modal-buttons button {
+            padding: 6px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .btn-cancel { background: #4e5058; color: white; }
+        .btn-save { background: #248046; color: white; }
+    </style>
 </head>
 <body>
 
-    <!-- 상단 메뉴 -->
-    <header>
-        <div class="logo">🎮 OUR MINECRAFT SERVER</div>
-        <nav>
-            <a href="#">홈</a>
-            <a href="#">서버 규칙</a>
-            <a href="#">공지사항</a>
-            <a href="#">상점</a>
-        </nav>
-    </header>
-
-    <!-- 대문 배너 -->
-    <div class="hero">
-        <h1>야생 & 힐링 마인크래프트 서버</h1>
-        <p>함께 소통하고 건축하며 즐길 수 있는 최고의 공간입니다.</p>
-        <div class="server-ip">서버 주소: play.example.com</div>
+    <h1>포켓몬 서버 멤버 프로필</h1>
+    <div class="container" id="profile-container">
+        <!-- 프로필 카드가 동적으로 생성됩니다 -->
     </div>
 
-    <!-- 컨텐츠 영역 -->
-    <div class="container">
-        <!-- 왼쪽: 공지사항 -->
-        <div class="section-box">
-            <h3>📢 서버 최신 공지사항</h3>
-            <p>1. 싸우지 말고 매너 플레이 해주세요!</p>
-            <p>2. 불법 프로그램(핵, 매크로 등) 사용 시 영구 차단됩니다.</p>
-        </div>
-
-        <!-- 오른쪽: 프로필 관리 (Firebase 연동) -->
-        <div class="section-box profile-card">
-            <h3>👤 플레이어 프로필</h3>
-            <div id="viewArea">
-                <p><strong>닉네임:</strong> <span id="viewName">불러오는 중...</span></p>
-                <p><strong>역할:</strong> <span id="viewRole">불러오는 중...</span></p>
-                <p><strong>소개:</strong> <span id="viewBio">불러오는 중...</span></p>
+    <!-- 수정 모달 -->
+    <div class="modal" id="editModal">
+        <div class="modal-content">
+            <h3 id="modalTitle">프로필 수정</h3>
+            <div id="authSection">
+                <label>비밀번호 입력</label>
+                <input type="password" id="inputPassword" placeholder="비밀번호를 입력하세요">
+                <button class="btn-save" onclick="verifyPassword()">확인</button>
             </div>
-            
-            <hr class="divider">
-
-            <div id="editArea">
-                <input type="text" id="inputName" placeholder="닉네임">
-                <input type="text" id="inputRole" placeholder="역할 (예: 유저, 빌더)">
-                <input type="text" id="inputBio" placeholder="한줄소개">
-                <button id="saveBtn">프로필 저장하기</button>
+            <div id="editSection" style="display:none;">
+                <label>포켓몬 및 레벨 수정 (예: 피카츄 Lv.50, 리자몽 Lv.60)</label>
+                <textarea id="inputPokemon" rows="4" style="width:100%; background:#1e1f22; color:white; border:1px solid #3f4147; border-radius:4px; padding:8px;"></textarea>
+                <div class="modal-buttons" style="margin-top:15px;">
+                    <button class="btn-cancel" onclick="closeModal()">취소</button>
+                    <button class="btn-save" onclick="saveData()">저장</button>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- 메인 자바스크립트 연결 -->
-    <script type="module" src="app.js"></script>
+    <!-- Firebase SDK 로드 -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getFirestore, collection, getDocs, doc, updateDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+        // TODO: 본인의 Firebase 프로젝트 설정값으로 변경하세요
+        const firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_AUTH_DOMAIN",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_STORAGE_BUCKET",
+            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+            appId: "YOUR_APP_ID"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        const members = ["김민규", "권영재", "김주환", "장유성", "정세훈", "한승기"];
+        let currentEditingMember = "";
+
+        window.loadProfiles = async function() {
+            const container = document.getElementById("profile-container");
+            container.innerHTML = "";
+
+            for (const name of members) {
+                const docRef = doc(db, "profiles", name);
+                const docSnap = await getDoc(docRef);
+                
+                let pokemonData = [];
+                if (docSnap.exists()) {
+                    pokemonData = docSnap.data().pokemonList || [];
+                }
+
+                let pokemonHtml = pokemonData.map(p => `<div class="pokemon-item"><span>${p.name}</span><span>Lv.${p.level}</span></div>`).join('');
+                if(pokemonData.length === 0) pokemonHtml = "<p style='color:#949ba4;'>등록된 포켓몬이 없습니다.</p>";
+
+                const card = document.createElement("div");
+                card.className = "profile-card";
+                card.innerHTML = `
+                    <button class="edit-btn" onclick="openEditModal('${name}')">수정</button>
+                    <h2>${name}</h2>
+                    <div class="pokemon-list">${pokemonHtml}</div>
+                `;
+                container.appendChild(card);
+            }
+        }
+
+        window.openEditModal = function(name) {
+            currentEditingMember = name;
+            document.getElementById("modalTitle").innerText = `${name} 프로필 수정`;
+            document.getElementById("inputPassword").value = "";
+            document.getElementById("authSection").style.display = "block";
+            document.getElementById("editSection").style.display = "none";
+            document.getElementById("editModal").style.display = "flex";
+        }
+
+        window.verifyPassword = async function() {
+            const pwd = document.getElementById("inputPassword").value;
+            const docRef = doc(db, "profiles", currentEditingMember);
+            const docSnap = await getDoc(docRef);
+
+            if (docSnap.exists() && docSnap.data().password === pwd) {
+                document.getElementById("authSection").style.display = "none";
+                document.getElementById("editSection").style.display = "block";
+                
+                const list = docSnap.data().pokemonList || [];
+                // 텍스트 형태로 변환하여 textarea에 표시
+                document.getElementById("inputPokemon").value = list.map(p => `${p.name}, ${p.level}`).join('\n');
+            } else {
+                alert("비밀번호가 틀렸습니다!");
+            }
+        }
+
+        window.saveData = async function() {
+            const rawText = document.getElementById("inputPokemon").value;
+            // 줄바꿈 단위로 분리하여 파싱 (형식: 포켓몬이름, 레벨)
+            const lines = rawText.split('\n');
+            const newPokemonList = [];
+
+            for(let line of lines) {
+                if(line.trim() === "") continue;
+                const parts = line.split(',');
+                if(parts.length >= 2) {
+                    newPokemonList.push({
+                        name: parts[0].trim(),
+                        level: Number(parts[1].trim())
+                    });
+                }
+            }
+
+            const docRef = doc(db, "profiles", currentEditingMember);
+            await updateDoc(docRef, {
+                pokemonList: newPokemonList
+            });
+
+            alert("수정되었습니다!");
+            closeModal();
+            loadProfiles();
+        }
+
+        window.closeModal = function() {
+            document.getElementById("editModal").style.display = "none";
+        }
+
+        // 페이지 로드 시 프로필 불러오기
+        loadProfiles();
+    </script>
 </body>
 </html>
