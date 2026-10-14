@@ -11,7 +11,7 @@
         * { box-sizing: border-box; }
         body {
             font-family: 'Noto Sans KR', sans-serif;
-            background: #0d0f14;
+            background: #0d0e12;
             color: #f0f2f5;
             margin: 0;
             padding: 0;
@@ -20,8 +20,8 @@
 
         /* Header */
         header {
-            background: rgba(18, 20, 29, 0.95);
-            backdrop-filter: blur(12px);
+            background: rgba(22, 24, 31, 0.95);
+            backdrop-filter: blur(10px);
             border-bottom: 2px solid #e3350d;
             padding: 18px 20px 0 20px;
             position: sticky;
@@ -36,9 +36,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
+            gap: 10px;
             font-weight: 900;
-            letter-spacing: -0.5px;
         }
         .pokeball-icon {
             width: 28px; height: 28px;
@@ -46,7 +45,7 @@
             border-radius: 50%;
             border: 2px solid #000;
             position: relative;
-            box-shadow: 0 0 12px rgba(227, 53, 13, 0.6);
+            box-shadow: 0 0 10px rgba(227, 53, 13, 0.5);
             animation: spin 6s linear infinite;
         }
         .pokeball-icon::after {
@@ -65,21 +64,21 @@
         .nav-tabs {
             display: flex;
             justify-content: center;
-            gap: 8px;
+            gap: 6px;
             max-width: 1200px;
             margin: 0 auto;
             overflow-x: auto;
         }
         .tab-btn {
             background: transparent;
-            color: #8c93a4;
+            color: #9095a0;
             border: none;
-            padding: 12px 20px;
+            padding: 12px 18px;
             font-size: 0.95rem;
             font-weight: 700;
             cursor: pointer;
             border-bottom: 3px solid transparent;
-            transition: all 0.25s;
+            transition: all 0.2s;
             display: flex;
             align-items: center;
             gap: 8px;
@@ -89,19 +88,19 @@
         .tab-btn.active {
             color: #ffcb05;
             border-bottom-color: #ffcb05;
-            text-shadow: 0 0 10px rgba(255, 203, 5, 0.4);
+            text-shadow: 0 0 8px rgba(255, 203, 5, 0.3);
         }
 
-        /* Main Layout */
-        .main-container { max-width: 1200px; margin: 25px auto; padding: 0 20px 40px 20px; }
+        /* Container */
+        .main-container { max-width: 1200px; margin: 25px auto; padding: 0 20px; }
         .tab-content { display: none; }
         .tab-content.active { display: block; }
 
-        /* Hero Banner */
+        /* Banner */
         .hero-banner {
-            background: linear-gradient(135deg, rgba(227, 53, 13, 0.18) 0%, rgba(255, 203, 5, 0.12) 100%), #141722;
-            border: 1px solid rgba(227, 53, 13, 0.35);
-            border-radius: 18px;
+            background: linear-gradient(135deg, rgba(227, 53, 13, 0.15) 0%, rgba(255, 203, 5, 0.1) 100%), #171920;
+            border: 1px solid rgba(227, 53, 13, 0.3);
+            border-radius: 16px;
             padding: 24px 30px;
             margin-bottom: 25px;
             display: flex;
@@ -109,318 +108,306 @@
             align-items: center;
             flex-wrap: wrap;
             gap: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
         }
-        .hero-text h2 { margin: 0 0 6px 0; color: #ffffff; font-size: 1.55rem; font-weight: 800; }
-        .hero-text p { margin: 0; color: #9aa1b1; font-size: 0.9rem; }
+        .hero-text h2 { margin: 0 0 8px 0; color: #ffffff; font-size: 1.5rem; font-weight: 800; }
+        .hero-text p { margin: 0; color: #a0a5b1; font-size: 0.9rem; }
         .stat-badges { display: flex; gap: 12px; }
         .stat-card {
-            background: #0d0f14;
-            border: 1px solid #232736;
-            border-radius: 12px;
-            padding: 10px 20px;
+            background: #0f1015;
+            border: 1px solid #2a2e39;
+            border-radius: 10px;
+            padding: 10px 18px;
             text-align: center;
-            min-width: 105px;
+            min-width: 100px;
         }
-        .stat-card .num { font-size: 1.35rem; font-weight: 900; color: #ffcb05; }
-        .stat-card .label { font-size: 0.78rem; color: #7f8698; margin-top: 2px; }
+        .stat-card .num { font-size: 1.3rem; font-weight: 900; color: #ffcb05; }
+        .stat-card .label { font-size: 0.78rem; color: #808592; }
 
         /* Quick Grid */
         .quick-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 16px;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
         .quick-card {
-            background: #141722;
-            border: 1px solid #232736;
-            border-radius: 14px;
+            background: #171920;
+            border: 1px solid #282c37;
+            border-radius: 12px;
             padding: 18px;
             cursor: pointer;
-            transition: all 0.25s ease;
+            transition: all 0.2s ease;
         }
         .quick-card:hover {
             border-color: #ffcb05;
             transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.4);
         }
-        .quick-card h3 { margin: 0 0 8px 0; color: #fff; display: flex; align-items: center; gap: 10px; font-size: 1.05rem; }
-        .quick-card p { margin: 0; color: #888f9e; font-size: 0.85rem; }
+        .quick-card h3 { margin: 0 0 8px 0; color: #fff; display: flex; align-items: center; gap: 8px; font-size: 1.05rem; }
+        .quick-card p { margin: 0; color: #8a8f9d; font-size: 0.85rem; }
 
-        /* Section Header */
-        .section-title {
-            color: #ffffff; font-size: 1.3rem; margin: 30px 0 16px 0;
-            display: flex; align-items: center; gap: 10px; font-weight: 800;
-        }
+        /* Section Title */
+        .section-title { color: #ffffff; font-size: 1.25rem; margin: 25px 0 15px 0; display: flex; align-items: center; gap: 10px; font-weight: 800; }
 
-        /* Profile Cards Grid */
+        /* Profiles Grid */
         .profile-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
+            gap: 18px;
         }
         
         .profile-card {
-            background: #141722;
-            border: 1px solid #232736;
+            background: #15171e;
+            border: 2px solid transparent;
             border-radius: 16px;
-            padding: 20px;
+            padding: 18px;
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
-            overflow: hidden;
-        }
-        .profile-card-line {
-            position: absolute;
-            top: 0; left: 0; width: 6px; height: 100%;
+            background-image: linear-gradient(#15171e, #15171e), var(--theme-gradient, linear-gradient(135deg, #ff113a, #88001b));
+            background-origin: border-box;
+            background-clip: padding-box, border-box;
         }
         .profile-card:hover {
-            transform: translateY(-6px);
-            border-color: var(--theme-color, #ffcb05);
-            box-shadow: 0 10px 25px var(--theme-shadow, rgba(255, 203, 5, 0.3));
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px var(--theme-shadow, rgba(255, 17, 58, 0.45));
         }
         
         .card-header {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 14px;
+            margin-bottom: 12px;
         }
         .user-info { display: flex; align-items: center; gap: 12px; }
         .avatar {
-            width: 46px; height: 46px;
-            background: var(--theme-gradient, linear-gradient(135deg, #e3350d, #ffcb05));
+            width: 44px; height: 44px;
+            background: var(--theme-gradient, linear-gradient(135deg, #ff113a, #88001b));
             border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
-            font-weight: 900; color: #111; font-size: 1.25rem;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            font-weight: 900; color: #ffffff; font-size: 1.15rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.2);
         }
-        .user-name { font-size: 1.15rem; font-weight: 800; color: white; }
-        .mc-name { font-size: 0.8rem; color: #23a55a; font-weight: 700; margin-top: 2px; }
+        .user-name { font-size: 1.1rem; font-weight: 800; color: white; }
+        .mc-name { font-size: 0.78rem; color: #23a55a; font-weight: bold; margin-top: 2px; }
         .poke-badge {
             font-size: 0.8rem;
-            color: var(--theme-color, #ffcb05);
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--theme-color, #ffcb05);
+            color: #ffffff;
+            background: var(--theme-gradient, linear-gradient(135deg, #ff113a, #88001b));
             padding: 4px 12px;
             border-radius: 20px;
             font-weight: 800;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
         }
-
         .card-preview {
-            background: #0d0f14;
-            padding: 12px 14px;
-            border-radius: 12px;
+            background: #0a0b0e;
+            padding: 10px 12px;
+            border-radius: 10px;
             color: #a0a5b1;
-            font-size: 0.88rem;
-            border: 1px solid #1e2230;
+            font-size: 0.85rem;
+            border: 1px solid #1f232d;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .starter-badge {
-            color: #ffcb05; font-size: 0.82rem; font-weight: bold; display: flex; align-items: center; gap: 6px;
-            background: rgba(255, 203, 5, 0.12); padding: 4px 10px; border-radius: 8px; border: 1px solid rgba(255, 203, 5, 0.25);
+            color: #ffffff; font-size: 0.8rem; font-weight: bold; display: flex; align-items: center; gap: 6px;
+            background: rgba(255, 255, 255, 0.08); padding: 4px 10px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.15);
         }
         .starter-badge img {
-            width: 26px; height: 26px; object-fit: contain; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4));
+            width: 24px; height: 24px; object-fit: contain;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
         }
 
         /* Commands, Rules, Locations Cards */
-        .cmd-grid, .rules-list, .location-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
-        .cmd-card, .rule-card, .location-card { background: #141722; border: 1px solid #232736; border-radius: 14px; padding: 18px; }
+        .cmd-grid, .rules-list, .location-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; }
+        .cmd-card, .rule-card, .location-card { background: #171920; border: 1px solid #282c37; border-radius: 12px; padding: 16px; }
         .cmd-code {
-            background: #0d0f14; color: #ffcb05; padding: 10px 14px; border-radius: 8px;
-            font-family: monospace; font-size: 0.92rem; display: flex; justify-content: space-between; align-items: center;
-            border: 1px solid #1e2230; margin-bottom: 8px; font-weight: 600;
+            background: #0f1015; color: #ffcb05; padding: 10px 12px; border-radius: 8px;
+            font-family: monospace; font-size: 0.9rem; display: flex; justify-content: space-between; align-items: center;
+            border: 1px solid #222631; margin-bottom: 8px;
         }
         .rule-card { border-left: 4px solid #e3350d; }
-        .rule-card i { color: #e3350d; font-size: 1.25rem; }
-        .loc-coords { color: #23a55a; font-family: monospace; font-weight: bold; font-size: 1rem; margin-top: 4px; }
-        .copy-btn { background: none; border: none; color: #7f8698; cursor: pointer; transition: color 0.2s; font-size: 0.9rem; }
+        .rule-card i { color: #e3350d; font-size: 1.2rem; }
+        .loc-coords { color: #23a55a; font-family: monospace; font-weight: bold; }
+        .copy-btn { background: none; border: none; color: #808592; cursor: pointer; transition: color 0.2s; }
         .copy-btn:hover { color: #fff; }
 
-        /* MODALS */
+        /* MODAL STYLES */
         .modal {
             display: none;
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(5, 6, 9, 0.85);
+            background: rgba(0, 0, 0, 0.85);
             backdrop-filter: blur(8px);
             justify-content: center;
             align-items: center;
             z-index: 1000;
-            padding: 20px;
         }
         .modal-content {
-            background: #141722;
-            padding: 28px;
+            background: #15171e;
+            padding: 26px;
             border-radius: 20px;
-            width: 100%;
-            max-width: 680px;
-            border: 1px solid #2a2f42;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
-            max-height: 90vh;
-            overflow-y: auto;
+            width: 95%;
+            max-width: 650px;
+            border: 1px solid #2d3240;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.7);
         }
         .modal-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid #232736;
-            padding-bottom: 16px;
-            margin-bottom: 20px;
+            border-bottom: 1px solid #282c37;
+            padding-bottom: 14px;
+            margin-bottom: 18px;
         }
-        .modal-header h3 { margin: 0; color: white; font-size: 1.35rem; font-weight: 900; }
+        .modal-header h3 { margin: 0; color: white; font-size: 1.25rem; font-weight: 800; }
         
         .header-actions { display: flex; align-items: center; gap: 10px; }
         .btn-mini-edit {
-            background: #1e2230; color: #b0b6c6; border: 1px solid #32384d; padding: 7px 14px;
-            border-radius: 8px; font-size: 0.85rem; font-weight: 700; cursor: pointer; transition: all 0.2s;
+            background: #252833; color: #b0b5c0; border: 1px solid #3b4050; padding: 6px 14px;
+            border-radius: 8px; font-size: 0.82rem; font-weight: 700; cursor: pointer; transition: all 0.2s;
             display: flex; align-items: center; gap: 6px;
         }
         .btn-mini-edit:hover { background: #e3350d; color: #fff; border-color: #e3350d; }
-        .close-btn { background: none; border: none; color: #7f8698; font-size: 1.4rem; cursor: pointer; transition: color 0.2s; }
-        .close-btn:hover { color: #fff; }
+        .close-btn { background: none; border: none; color: #808592; font-size: 1.3rem; cursor: pointer; }
 
-        /* NEW PROFILE CARD MODAL STYLING (프로필형 하이라이트) */
-        .hero-profile-card {
-            background: linear-gradient(135deg, rgba(30, 34, 48, 0.9), rgba(15, 17, 24, 0.95));
-            border: 1px solid #2a2f42;
+        /* Profile Showcase Card in Modal */
+        .profile-hero-card {
+            background: #0c0d11;
             border-radius: 16px;
             padding: 20px;
-            margin-bottom: 22px;
+            margin-bottom: 20px;
+            border: 1px solid #222631;
             display: flex;
             align-items: center;
             justify-content: space-between;
             gap: 20px;
-            position: relative;
-            overflow: hidden;
-            box-shadow: inset 0 0 20px rgba(0,0,0,0.3);
         }
-        .hero-profile-left {
+        .hero-left-info {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .starter-hero-box {
             display: flex;
             align-items: center;
-            gap: 16px;
-            z-index: 2;
+            gap: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 8px 16px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
-        .hero-avatar {
-            width: 60px; height: 60px;
-            background: linear-gradient(135deg, #e3350d, #ffcb05);
-            border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.7rem; font-weight: 900; color: #111;
-            box-shadow: 0 4px 15px rgba(227, 53, 13, 0.4);
-        }
-        .hero-user-details h2 { margin: 0; font-size: 1.4rem; color: #fff; font-weight: 800; }
-        .hero-user-details .mc-tag { color: #23a55a; font-weight: bold; font-size: 0.9rem; margin-top: 2px; }
-        
-        .hero-starter-box {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            background: rgba(255, 203, 5, 0.08);
-            border: 1px solid rgba(255, 203, 5, 0.25);
-            padding: 10px 18px;
-            border-radius: 14px;
-            z-index: 2;
-        }
-        .hero-starter-img {
-            width: 75px; height: 75px;
+        .starter-hero-img {
+            width: 70px;
+            height: 70px;
             object-fit: contain;
-            filter: drop-shadow(0 6px 12px rgba(0,0,0,0.5));
-            animation: floatPoke 3s ease-in-out infinite;
+            filter: drop-shadow(0 4px 10px rgba(0,0,0,0.6));
         }
-        @keyframes floatPoke {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
-        }
-        .hero-starter-info { text-align: right; }
-        .hero-starter-info .label { font-size: 0.75rem; color: #ffcb05; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; }
-        .hero-starter-info .name { font-size: 1.15rem; color: #ffffff; font-weight: 900; margin-top: 2px; }
 
-        /* POKEMON GRID DISPLAY (도감 대신 깔끔한 보유 포켓몬 프로필 카드리스트) */
-        .poke-gallery-grid {
+        /* Pokemon Showcase Grid in Modal */
+        .poke-showcase-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
             gap: 14px;
+            max-height: 320px;
+            overflow-y: auto;
+            padding-right: 4px;
         }
-        .poke-showcase-card {
-            background: #0d0f14;
-            border: 1px solid #232736;
-            border-radius: 14px;
-            padding: 16px;
-            text-align: center;
-            position: relative;
-            transition: transform 0.2s, border-color 0.2s;
+        .poke-card-item {
+            background: #0c0d11;
+            border: 1px solid #222631;
+            border-radius: 12px;
+            padding: 12px 10px;
             display: flex;
             flex-direction: column;
             align-items: center;
+            text-align: center;
+            transition: all 0.2s;
         }
-        .poke-showcase-card:hover {
-            transform: translateY(-4px);
+        .poke-card-item:hover {
             border-color: #ffcb05;
+            transform: translateY(-3px);
         }
-        .poke-showcase-img {
-            width: 85px; height: 85px;
+        .poke-card-img {
+            width: 75px;
+            height: 75px;
             object-fit: contain;
-            margin-bottom: 10px;
-            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.6));
+            margin-bottom: 6px;
+            filter: drop-shadow(0 3px 6px rgba(0,0,0,0.5));
         }
-        .poke-showcase-name { font-weight: 800; color: #fff; font-size: 1rem; margin-bottom: 6px; }
-        .poke-showcase-lvl {
-            background: rgba(227, 53, 13, 0.15);
-            color: #e3350d;
-            border: 1px solid rgba(227, 53, 13, 0.3);
+        .poke-card-name {
+            font-weight: 800;
+            color: #ffffff;
+            font-size: 0.9rem;
+            margin-bottom: 4px;
+        }
+        .poke-card-level {
+            background: rgba(227, 53, 13, 0.2);
+            color: #ff4d4d;
+            border: 1px solid rgba(227, 53, 13, 0.4);
+            padding: 2px 8px;
+            border-radius: 10px;
             font-size: 0.78rem;
             font-weight: 800;
-            padding: 2px 10px;
-            border-radius: 12px;
         }
 
-        /* Edit Form Styles */
-        .input-group { margin-bottom: 16px; }
-        .input-group label { display: block; color: #9aa1b1; font-size: 0.85rem; font-weight: bold; margin-bottom: 8px; }
+        /* Input Controls */
+        .input-group { margin-bottom: 14px; }
+        .input-group label { display: block; color: #a0a5b1; font-size: 0.82rem; font-weight: bold; margin-bottom: 6px; }
         .form-input {
-            width: 100%; background: #0d0f14; border: 1px solid #2a2f42; color: white; padding: 12px 14px;
-            border-radius: 8px; font-size: 0.92rem; outline: none; transition: border-color 0.2s;
+            width: 100%; background: #0c0d11; border: 1px solid #2d3240; color: white; padding: 10px 12px;
+            border-radius: 8px; font-size: 0.9rem; outline: none;
         }
         .form-input:focus { border-color: #ffcb05; }
 
         .edit-poke-row { display: flex; gap: 10px; margin-bottom: 10px; align-items: center; }
         .edit-poke-row input {
-            background: #0d0f14; border: 1px solid #2a2f42; color: white; padding: 10px 12px;
+            background: #0c0d11; border: 1px solid #2d3240; color: white; padding: 10px;
             border-radius: 8px; font-size: 0.9rem; outline: none;
         }
         .edit-poke-row input:focus { border-color: #ffcb05; }
 
-        .color-picker { display: flex; gap: 12px; margin-top: 8px; }
-        .color-option {
-            width: 34px; height: 34px; border-radius: 50%; cursor: pointer; border: 2px solid transparent;
-            transition: transform 0.2s;
+        /* 11가지 그라데이션 색상 선택기 */
+        .color-picker {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 10px;
+            margin-top: 8px;
         }
-        .color-option:hover { transform: scale(1.15); }
-        .color-option.selected { border-color: #ffffff; box-shadow: 0 0 10px rgba(255,255,255,0.8); }
+        .color-option {
+            height: 36px;
+            border-radius: 10px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 800;
+            color: #ffffff;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+        }
+        .color-option:hover { transform: scale(1.06); }
+        .color-option.selected {
+            border-color: #ffffff;
+            box-shadow: 0 0 12px rgba(255,255,255,0.9);
+            transform: scale(1.06);
+        }
 
         .btn-action {
-            width: 100%; padding: 13px; border: none; border-radius: 8px; font-weight: 800; cursor: pointer; margin-top: 15px; font-size: 0.98rem; transition: background 0.2s;
+            width: 100%; padding: 12px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; margin-top: 15px; font-size: 0.95rem;
         }
         .btn-save { background: #23a55a; color: white; }
-        .btn-save:hover { background: #1f9250; }
         .btn-del { background: #da373c; color: white; border: none; padding: 10px 14px; border-radius: 8px; cursor: pointer; }
-        .btn-del:hover { background: #b82d32; }
-
-        @media (max-width: 600px) {
-            .hero-profile-card { flex-direction: column; align-items: flex-start; gap: 15px; }
-            .hero-starter-box { width: 100%; justify-content: space-between; }
-        }
     </style>
 </head>
 <body>
 
-    <!-- Header Navigation -->
     <header>
         <div class="header-title">
             <h1><div class="pokeball-icon"></div> 포켓몬 마크 서버</h1>
@@ -463,7 +450,7 @@
                 </div>
             </div>
 
-            <div class="section-title"><i class="fa-solid fa-users"></i> 멤버 프로필 (클릭하여 프로필 보기)</div>
+            <div class="section-title"><i class="fa-solid fa-users"></i> 멤버 프로필 (클릭하여 확인)</div>
             <div class="profile-grid" id="home-profile-container"></div>
         </div>
 
@@ -492,41 +479,31 @@
         </div>
     </div>
 
-    <!-- 플레이어 프로필 상세 모달 -->
+    <!-- 상세 프로필 모달 -->
     <div class="modal" id="detailModal">
         <div class="modal-content">
             <div class="modal-header">
-                <h3>플레이어 프로필</h3>
+                <div>
+                    <h3 id="detailTitle" style="margin-bottom: 2px;">멤버 프로필</h3>
+                    <div id="detailMcName" style="color:#23a55a; font-size:0.85rem; font-weight:bold;"></div>
+                </div>
                 <div class="header-actions">
                     <button class="btn-mini-edit" onclick="openAuthModal()"><i class="fa-solid fa-pen"></i> 프로필 수정</button>
                     <button class="close-btn" onclick="closeModal('detailModal')"><i class="fa-solid fa-xmark"></i></button>
                 </div>
             </div>
 
-            <!-- 프로필 하이라이트 카드로 대폭 개선 -->
-            <div class="hero-profile-card">
-                <div class="hero-profile-left">
-                    <div class="hero-avatar" id="modalAvatar">유</div>
-                    <div class="hero-user-details">
-                        <h2 id="modalUserName">유성</h2>
-                        <div class="mc-tag" id="modalMcName">@유성_MC</div>
-                    </div>
+            <!-- 프로필 카드 헤더 쇼케이스 -->
+            <div class="profile-hero-card">
+                <div class="hero-left-info">
+                    <div id="heroName" style="font-size: 1.5rem; font-weight: 900; color: #fff;"></div>
+                    <div id="heroMc" style="color: #23a55a; font-size: 0.9rem; font-weight: 700;"></div>
                 </div>
-                
-                <div class="hero-starter-box" id="modalStarterBox">
-                    <div class="hero-starter-info">
-                        <div class="label">⭐ 스타팅 포켓몬</div>
-                        <div class="name" id="modalStarterName">브케인</div>
-                    </div>
-                    <img class="hero-starter-img" id="modalStarterImg" src="" alt="스타팅" onerror="this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png'">
-                </div>
+                <div id="detailStarterBox" class="starter-hero-box" style="display:none;"></div>
             </div>
 
-            <div style="font-weight: 800; font-size: 1rem; color: #fff; margin-bottom: 14px; display: flex; align-items: center; gap: 8px;">
-                <i class="fa-solid fa-shield-cat" style="color: #ffcb05;"></i> 보유 포켓몬 파티
-            </div>
-
-            <div id="detailGallery" class="poke-gallery-grid"></div>
+            <!-- 포켓몬 카드 쇼케이스 갤러리 -->
+            <div id="detailList" class="poke-showcase-grid"></div>
         </div>
     </div>
 
@@ -539,7 +516,7 @@
             </div>
             
             <div id="authSection">
-                <p style="color:#8a8f9d; font-size:0.88rem; margin-top:0;">수정 권한을 확인하기 위해 비밀번호를 입력하세요.</p>
+                <p style="color:#8a8f9d; font-size:0.85rem; margin-top:0;">수정 권한을 확인하기 위해 비밀번호를 입력하세요.</p>
                 <input type="password" id="inputPassword" class="form-input" placeholder="비밀번호 입력 (기본: 1234)">
                 <button class="btn-action btn-save" onclick="verifyPassword()">인증 확인</button>
             </div>
@@ -560,21 +537,28 @@
                     <input type="password" id="editPassword" class="form-input" placeholder="새 비밀번호">
                 </div>
 
+                <!-- 11가지 그라데이션 색상 팔레트 -->
                 <div class="input-group">
-                    <label>카드 테두리 그라데이션 & 네온 테마 선택</label>
+                    <label>카드 테두리 & 네온 그라데이션 색상 선택 (11가지)</label>
                     <div class="color-picker" id="colorPicker">
-                        <div class="color-option" data-color="yellow-red" style="background: linear-gradient(180deg, #ffcb05, #e3350d);" onclick="selectColorTheme('yellow-red')"></div>
-                        <div class="color-option" data-color="blue-purple" style="background: linear-gradient(180deg, #00a8fc, #5865f2);" onclick="selectColorTheme('blue-purple')"></div>
-                        <div class="color-option" data-color="green-mint" style="background: linear-gradient(180deg, #23a55a, #00f2fe);" onclick="selectColorTheme('green-mint')"></div>
-                        <div class="color-option" data-color="pink-orange" style="background: linear-gradient(180deg, #ff0844, #ffb199);" onclick="selectColorTheme('pink-orange')"></div>
-                        <div class="color-option" data-color="gold-neon" style="background: linear-gradient(180deg, #f6d365, #fda085);" onclick="selectColorTheme('gold-neon')"></div>
+                        <div class="color-option" data-color="red" style="background: linear-gradient(135deg, #ff113a, #88001b);" onclick="selectColorTheme('red')">빨강</div>
+                        <div class="color-option" data-color="orange" style="background: linear-gradient(135deg, #ff7a00, #ff2a00);" onclick="selectColorTheme('orange')">주황</div>
+                        <div class="color-option" data-color="yellow" style="background: linear-gradient(135deg, #ffe600, #ff9900);" onclick="selectColorTheme('yellow')">노랑</div>
+                        <div class="color-option" data-color="lightgreen" style="background: linear-gradient(135deg, #8df300, #22c55e);" onclick="selectColorTheme('lightgreen')">연두</div>
+                        <div class="color-option" data-color="green" style="background: linear-gradient(135deg, #00e676, #00796b);" onclick="selectColorTheme('green')">초록</div>
+                        <div class="color-option" data-color="skyblue" style="background: linear-gradient(135deg, #00e5ff, #00838f);" onclick="selectColorTheme('skyblue')">하늘</div>
+                        <div class="color-option" data-color="blue" style="background: linear-gradient(135deg, #0066ff, #002699);" onclick="selectColorTheme('blue')">파랑</div>
+                        <div class="color-option" data-color="pink" style="background: linear-gradient(135deg, #ff66cc, #cc0088);" onclick="selectColorTheme('pink')">핑크</div>
+                        <div class="color-option" data-color="purple" style="background: linear-gradient(135deg, #b300ff, #4a0080);" onclick="selectColorTheme('purple')">보라</div>
+                        <div class="color-option" data-color="black" style="background: linear-gradient(135deg, #434343, #000000);" onclick="selectColorTheme('black')">검은</div>
+                        <div class="color-option" data-color="white" style="background: linear-gradient(135deg, #ffffff, #9e9e9e); color:#111; text-shadow:none;" onclick="selectColorTheme('white')">흰색</div>
                     </div>
                 </div>
 
                 <div class="input-group" style="margin-top: 20px;">
                     <label>보유 포켓몬 및 레벨 수정</label>
-                    <div id="pokeEditList" style="max-height: 220px; overflow-y: auto;"></div>
-                    <button onclick="addPokeInput()" style="width:100%; background:none; border:1px dashed #23a55a; color:#23a55a; padding:12px; border-radius:8px; margin-top:8px; font-weight:bold; cursor:pointer;">+ 포켓몬 추가</button>
+                    <div id="pokeEditList" style="max-height: 200px; overflow-y: auto;"></div>
+                    <button onclick="addPokeInput()" style="width:100%; background:none; border:1px dashed #23a55a; color:#23a55a; padding:10px; border-radius:8px; margin-top:8px; font-weight:bold; cursor:pointer;">+ 포켓몬 추가</button>
                 </div>
 
                 <button class="btn-action btn-save" onclick="saveData()">최종 저장하기</button>
@@ -582,7 +566,7 @@
         </div>
     </div>
 
-    <!-- Firebase SDK & Script -->
+    <!-- Firebase SDK -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
         import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
@@ -603,28 +587,19 @@
         let currentMember = "";
         let currentPokemonList = [];
         let currentMemberData = {};
-        let selectedTheme = "yellow-red";
+        let selectedTheme = "red";
 
-        // 🔥 1~9세대 스타팅 및 인기/전설 포켓몬 한글 도감 매핑 🔥
+        // 🔥 포켓몬 한글 이름 도감 번호 매핑 🔥
         const pokeNumMap = {
             "이상해씨":1, "이상해풀":2, "이상해꽃":3, "파이리":4, "리자드":5, "리자몽":6,
             "꼬부기":7, "어니부기":8, "거북왕":9, "캐터피":10, "단데기":11, "버터플":12,
             "피카츄":25, "라이츄":26, "푸린":39, "고라파덕":54, "팬텀":94, "잉어킹":129, "갸라도스":130,
             "메타몽":132, "이브이":133, "치코리타":152, "베이리프":153, "메가니움":154,
             "브케인":155, "마그케인":156, "블레이범":157, "리아코":158, "엘리게이":159, "장크로다일":160,
-            "나무지기":252, "나무돌이":253, "나무킹":254, "아차모":255, "영치코":256, "번치코":257,
-            "물짱이":258, "늪짱이":259, "대짱이":260, "모부기":387, "파이숭이":388, "토대부기":389,
-            "불꽃숭이":390, "파이숭이":391, "초염몽":392, "팽도리":393, "팽태자":394, "엠페르트":395,
-            "주리비얀":495, "샤비":496, "샤로다":497, "뚜꾸리":498, "차오꿀":499, "염무왕":500,
-            "수댕이":501, "쌍검자비":502, "대검귀":503, "도치마론":650, "도치보구":651, "브리가론":652,
-            "푸호꼬":653, "테르나":654, "마포시":655, "개구마르":656, "개굴반장":657, "개굴닌자":658,
-            "나몰라빼미":722, "빼미뜨르":723, "모크나이퍼":724, "냐오불":725, "냐오히트":726, "어흥염":727,
-            "누리공":728, "키요공":729, "누리레느":730, "흥나숭":810, "채키몽":811, "고릴타":812,
-            "염버니":813, "비트런":814, "에이스번":815, "울머기":816, "누겔레온":817, "인텔리레온":818,
-            "냐오하":906, "나로테":907, "마스카나":908, "뜨아거":909, "악뜨거":910, "라우드본":911,
-            "꾸왁스":912, "아쿠카모":913, "웨이니발":914, "잠만보":143, "망나뇽":149, "뮤츠":150, "뮤":151,
-            "루기아":249, "칠색조":250, "세레비":251, "레쿠쟈":384, "디아루가":483, "펄기아":484,
-            "기라티나":487, "아르세우스":493
+            "나무지기":252, "아차모":255, "물짱이":258, "모부기":387, "불꽃숭이":390, "팽도리":393,
+            "주리비얀":495, "뚜꾸리":498, "수인의":501, "도치마론":650, "푸르꼬":653, "개구마르":656,
+            "나몰빼미":722, "냐오불":725, "누리공":728, "흥나숭":810, "염버니":813, "울머기":816,
+            "나오하":906, "뜨아거":909, "꾸왁스":912, "잠만보":143, "망나뇽":149, "뮤츠":150, "뮤":151, "세레비":251, "아르세우스":493
         };
 
         function getPokeImgUrl(name) {
@@ -637,12 +612,52 @@
             return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png`;
         }
 
+        // 🔥 11가지 풍부한 그라데이션 및 네온 스타일 정의 🔥
         const themeStyles = {
-            'yellow-red': { color: '#ffcb05', shadow: 'rgba(255, 203, 5, 0.4)', gradient: 'linear-gradient(180deg, #ffcb05, #e3350d)' },
-            'blue-purple': { color: '#00a8fc', shadow: 'rgba(0, 168, 252, 0.4)', gradient: 'linear-gradient(180deg, #00a8fc, #5865f2)' },
-            'green-mint': { color: '#00f2fe', shadow: 'rgba(0, 242, 254, 0.4)', gradient: 'linear-gradient(180deg, #23a55a, #00f2fe)' },
-            'pink-orange': { color: '#ff0844', shadow: 'rgba(255, 8, 68, 0.4)', gradient: 'linear-gradient(180deg, #ff0844, #ffb199)' },
-            'gold-neon': { color: '#f6d365', shadow: 'rgba(246, 211, 101, 0.4)', gradient: 'linear-gradient(180deg, #f6d365, #fda085)' }
+            'red': {
+                shadow: 'rgba(255, 17, 58, 0.5)',
+                gradient: 'linear-gradient(135deg, #ff113a, #88001b)'
+            },
+            'orange': {
+                shadow: 'rgba(255, 122, 0, 0.5)',
+                gradient: 'linear-gradient(135deg, #ff7a00, #ff2a00)'
+            },
+            'yellow': {
+                shadow: 'rgba(255, 230, 0, 0.5)',
+                gradient: 'linear-gradient(135deg, #ffe600, #ff9900)'
+            },
+            'lightgreen': {
+                shadow: 'rgba(141, 243, 0, 0.5)',
+                gradient: 'linear-gradient(135deg, #8df300, #22c55e)'
+            },
+            'green': {
+                shadow: 'rgba(0, 230, 118, 0.5)',
+                gradient: 'linear-gradient(135deg, #00e676, #00796b)'
+            },
+            'skyblue': {
+                shadow: 'rgba(0, 229, 255, 0.5)',
+                gradient: 'linear-gradient(135deg, #00e5ff, #00838f)'
+            },
+            'blue': {
+                shadow: 'rgba(0, 102, 255, 0.5)',
+                gradient: 'linear-gradient(135deg, #0066ff, #002699)'
+            },
+            'pink': {
+                shadow: 'rgba(255, 102, 204, 0.5)',
+                gradient: 'linear-gradient(135deg, #ff66cc, #cc0088)'
+            },
+            'purple': {
+                shadow: 'rgba(179, 0, 255, 0.5)',
+                gradient: 'linear-gradient(135deg, #b300ff, #4a0080)'
+            },
+            'black': {
+                shadow: 'rgba(255, 255, 255, 0.15)',
+                gradient: 'linear-gradient(135deg, #434343, #000000)'
+            },
+            'white': {
+                shadow: 'rgba(255, 255, 255, 0.6)',
+                gradient: 'linear-gradient(135deg, #ffffff, #9e9e9e)'
+            }
         };
 
         const commandsData = [
@@ -693,7 +708,7 @@
                 let pokemonData = [];
                 let mcName = "";
                 let starter = "";
-                let theme = "yellow-red";
+                let theme = "red";
 
                 try {
                     const docRef = doc(db, "profiles", name);
@@ -703,7 +718,7 @@
                         pokemonData = data.pokemonList || [];
                         mcName = data.mcName || "";
                         starter = data.starter || "";
-                        theme = data.theme || "yellow-red";
+                        theme = data.theme || "red";
                     }
                 } catch (e) {}
 
@@ -714,14 +729,12 @@
                     card.className = "profile-card";
                     card.onclick = () => openDetailModal(name, pokemonData, mcName, starter);
                     
-                    const t = themeStyles[theme] || themeStyles['yellow-red'];
+                    const t = themeStyles[theme] || themeStyles['red'];
 
-                    card.style.setProperty('--theme-color', t.color);
                     card.style.setProperty('--theme-shadow', t.shadow);
                     card.style.setProperty('--theme-gradient', t.gradient);
 
                     card.innerHTML = `
-                        <div class="profile-card-line" style="background: ${t.gradient};"></div>
                         <div class="card-header">
                             <div class="user-info">
                                 <div class="avatar">${name.charAt(0)}</div>
@@ -751,37 +764,39 @@
             document.getElementById("total-poke-count").innerText = `${totalPokes}마리`;
         }
 
-        /* 🌟 화려한 프로필형 모달 출력 함수 🌟 */
         window.openDetailModal = function(name, pokemonList, mcName, starter) {
             currentMember = name;
             currentPokemonList = pokemonList;
             
-            document.getElementById("modalAvatar").innerText = name.charAt(0);
-            document.getElementById("modalUserName").innerText = `${name}님의 프로필`;
-            document.getElementById("modalMcName").innerText = mcName ? `@${mcName}` : `@${name}_MC`;
+            document.getElementById("detailTitle").innerText = `${name}님의 프로필`;
+            document.getElementById("detailMcName").innerText = mcName ? `@${mcName}` : '';
 
-            const starterBox = document.getElementById("modalStarterBox");
+            document.getElementById("heroName").innerText = `${name}님의 프로필`;
+            document.getElementById("heroMc").innerText = mcName ? `@${mcName}` : '마인크래프트 닉네임 미등록';
+            
+            const starterBox = document.getElementById("detailStarterBox");
             if (starter) {
                 starterBox.style.display = "flex";
-                document.getElementById("modalStarterName").innerText = starter;
-                document.getElementById("modalStarterImg").src = getPokeImgUrl(starter);
+                starterBox.innerHTML = `
+                    <img class="starter-hero-img" src="${getPokeImgUrl(starter)}" alt="${starter}" onerror="this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png'">
+                    <div>
+                        <div style="font-size:0.75rem; color:#8a8f9d; font-weight:bold;">STARTER POKEMON</div>
+                        <div style="font-size:1.1rem; font-weight:900; color:#ffcb05;">${starter}</div>
+                    </div>
+                `;
             } else {
                 starterBox.style.display = "none";
             }
 
-            const galleryDiv = document.getElementById("detailGallery");
+            const listDiv = document.getElementById("detailList");
             if (pokemonList.length === 0) {
-                galleryDiv.innerHTML = `
-                    <div style="grid-column: 1 / -1; text-align: center; padding: 35px 20px; background: #0d0f14; border-radius: 14px; border: 1px dashed #232736;">
-                        <i class="fa-solid fa-box-open" style="font-size: 2rem; color: #505668; margin-bottom: 10px;"></i>
-                        <p style="color: #7f8698; margin: 0;">등록된 파티 포켓몬이 없습니다.</p>
-                    </div>`;
+                listDiv.innerHTML = `<div style="grid-column:1/-1; color:#8a8f9d; text-align:center; padding:40px 0;">등록된 포켓몬이 없습니다.</div>`;
             } else {
-                galleryDiv.innerHTML = pokemonList.map(p => `
-                    <div class="poke-showcase-card">
-                        <img class="poke-showcase-img" src="${getPokeImgUrl(p.name)}" alt="${p.name}" onerror="this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png'">
-                        <div class="poke-showcase-name">${p.name}</div>
-                        <span class="poke-showcase-lvl">Lv.${p.level}</span>
+                listDiv.innerHTML = pokemonList.map(p => `
+                    <div class="poke-card-item">
+                        <img class="poke-card-img" src="${getPokeImgUrl(p.name)}" alt="${p.name}" onerror="this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png'">
+                        <div class="poke-card-name">${p.name}</div>
+                        <div class="poke-card-level">Lv.${p.level}</div>
                     </div>
                 `).join('');
             }
@@ -817,7 +832,7 @@
                 document.getElementById("editMcName").value = currentMemberData.mcName || "";
                 document.getElementById("editStarter").value = currentMemberData.starter || "";
                 document.getElementById("editPassword").value = realPwd;
-                selectColorTheme(currentMemberData.theme || "yellow-red");
+                selectColorTheme(currentMemberData.theme || "red");
                 
                 renderEditList();
             } else {
@@ -900,7 +915,7 @@
                         <span>${c.cmd}</span>
                         <button class="copy-btn" onclick="copyText('${c.cmd}')"><i class="fa-regular fa-copy"></i></button>
                     </div>
-                    <div style="color:#8c93a4; font-size:0.88rem;">${c.desc}</div>
+                    <div style="color:#a0a5b1; font-size:0.85rem;">${c.desc}</div>
                 </div>
             `).join('');
         }
@@ -909,7 +924,7 @@
             document.getElementById("rules-container").innerHTML = rulesData.map(r => `
                 <div class="rule-card">
                     <i class="fa-solid fa-ban"></i>
-                    <div style="color:#fff; font-size:0.92rem; font-weight:600;">${r}</div>
+                    <div style="color:#fff; font-size:0.9rem;">${r}</div>
                 </div>
             `).join('');
         }
@@ -918,7 +933,7 @@
             document.getElementById("location-container").innerHTML = locationsData.map(l => `
                 <div class="location-card">
                     <div>
-                        <h4 style="margin:0 0 4px 0; color:#fff; font-size:1.05rem;">${l.name}</h4>
+                        <h4 style="margin:0 0 4px 0; color:#fff;">${l.name}</h4>
                         <div class="loc-coords">${l.coords}</div>
                     </div>
                     <button class="copy-btn" onclick="copyText('${l.coords}')"><i class="fa-regular fa-copy"></i> 복사</button>
