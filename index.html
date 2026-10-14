@@ -170,7 +170,7 @@
         }
         .profile-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 0 20px var(--theme-shadow, rgba(255, 17, 58, 0.45));
+            box-shadow: 0 0 22px var(--theme-shadow, rgba(255, 17, 58, 0.45));
         }
         
         .card-header {
@@ -200,25 +200,39 @@
             font-weight: 800;
             box-shadow: 0 2px 8px rgba(0,0,0,0.3);
         }
+
+        /* 🔥 메인 카드 스타팅 포켓몬 대형 이미지 시각적 강조 🔥 */
         .card-preview {
             background: #0a0b0e;
-            padding: 10px 12px;
-            border-radius: 10px;
+            padding: 12px 14px;
+            border-radius: 12px;
             color: #a0a5b1;
             font-size: 0.85rem;
             border: 1px solid #1f232d;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            min-height: 65px;
         }
 
-        .starter-badge {
-            color: #ffffff; font-size: 0.8rem; font-weight: bold; display: flex; align-items: center; gap: 6px;
-            background: rgba(255, 255, 255, 0.08); padding: 4px 10px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.15);
+        .starter-card-highlight {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 203, 5, 0.12);
+            border: 1.5px solid #ffcb05;
+            padding: 5px 12px;
+            border-radius: 10px;
+            color: #ffcb05;
+            font-weight: 800;
+            box-shadow: 0 0 10px rgba(255, 203, 5, 0.2);
         }
-        .starter-badge img {
-            width: 24px; height: 24px; object-fit: contain;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+        .starter-card-highlight img {
+            width: 46px;
+            height: 46px;
+            object-fit: contain;
+            filter: drop-shadow(0 3px 6px rgba(0,0,0,0.7));
+            transform: scale(1.1);
         }
 
         /* Commands, Rules, Locations Cards */
@@ -274,26 +288,40 @@
         .btn-mini-edit:hover { background: #e3350d; color: #fff; border-color: #e3350d; }
         .close-btn { background: none; border: none; color: #808592; font-size: 1.3rem; cursor: pointer; }
 
-        /* 스타팅 포켓몬 가로형 강조 배지 */
-        .starter-hero-badge {
-            display: inline-flex;
+        /* 🔥 모달 상단 대형 스타팅 포켓몬 하이라이트 배너 🔥 */
+        .starter-hero-banner {
+            background: linear-gradient(135deg, rgba(255, 203, 5, 0.15) 0%, rgba(227, 53, 13, 0.15) 100%), #0c0d11;
+            border: 2px solid #ffcb05;
+            border-radius: 16px;
+            padding: 16px 24px;
+            margin-bottom: 20px;
+            display: flex;
             align-items: center;
-            gap: 10px;
-            background: rgba(255, 203, 5, 0.12);
-            border: 1.5px solid #ffcb05;
-            padding: 8px 18px;
-            border-radius: 30px;
-            color: #ffcb05;
-            font-size: 0.95rem;
-            font-weight: 800;
-            margin-bottom: 18px;
-            box-shadow: 0 0 12px rgba(255, 203, 5, 0.2);
+            justify-content: space-between;
+            box-shadow: 0 0 20px rgba(255, 203, 5, 0.25);
         }
-        .starter-hero-badge img {
-            width: 32px;
-            height: 32px;
+        .starter-hero-text {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .starter-hero-text .title-tag {
+            color: #ffcb05;
+            font-size: 0.8rem;
+            font-weight: 900;
+            letter-spacing: 0.5px;
+        }
+        .starter-hero-text .poke-name-lg {
+            color: #ffffff;
+            font-size: 1.6rem;
+            font-weight: 900;
+        }
+        .starter-hero-img-lg {
+            width: 85px;
+            height: 85px;
             object-fit: contain;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.6));
+            filter: drop-shadow(0 6px 12px rgba(0,0,0,0.8));
+            transform: scale(1.15);
         }
 
         /* 포켓몬 목록 스타일 */
@@ -301,7 +329,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
             gap: 14px;
-            max-height: 320px;
+            max-height: 300px;
             overflow-y: auto;
             padding-right: 4px;
         }
@@ -482,7 +510,7 @@
                 </div>
             </div>
 
-            <!-- 스타팅 포켓몬 한국어 강조 박스 -->
+            <!-- 🔥 대형 스타팅 포켓몬 강조 배너 🔥 -->
             <div id="detailStarterBox" style="display:none;"></div>
 
             <!-- 보유 포켓몬 카드 리스트 -->
@@ -695,7 +723,7 @@
                         <div class="card-preview">
                             <span>${pokemonData.length > 0 ? `대표: ${pokemonData[0].name} (Lv.${pokemonData[0].level})` : '포켓몬 없음'}</span>
                             ${starter ? `
-                                <div class="starter-badge">
+                                <div class="starter-card-highlight">
                                     <img src="${getPokeImgUrl(starter)}" alt="${starter}" onerror="this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png'">
                                     <span>${starter}</span>
                                 </div>` : ''}
@@ -718,14 +746,17 @@
             document.getElementById("detailTitle").innerText = `${name}님의 프로필`;
             document.getElementById("detailMcName").innerText = mcName ? `@${mcName}` : '';
 
-            // 스타팅 포켓몬 강조 배지
+            // 🔥 모달 상단 스타팅 포켓몬 대형 배너 하이라이트 🔥
             const starterBox = document.getElementById("detailStarterBox");
             if (starter) {
                 starterBox.style.display = "block";
                 starterBox.innerHTML = `
-                    <div class="starter-hero-badge">
-                        <img src="${getPokeImgUrl(starter)}" alt="${starter}" onerror="this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png'">
-                        <span>스타팅 포켓몬: ${starter}</span>
+                    <div class="starter-hero-banner">
+                        <div class="starter-hero-text">
+                            <div class="title-tag">🔥 STARTER POKEMON</div>
+                            <div class="poke-name-lg">스타팅 포켓몬: ${starter}</div>
+                        </div>
+                        <img class="starter-hero-img-lg" src="${getPokeImgUrl(starter)}" alt="${starter}" onerror="this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png'">
                     </div>
                 `;
             } else {
