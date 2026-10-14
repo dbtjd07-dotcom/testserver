@@ -152,14 +152,15 @@
         /* Profiles Grid */
         .profile-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 18px;
         }
         
+        /* 🔥 11가지 그라데이션 카드 디자인 🔥 */
         .profile-card {
             background: #15171e;
             border: 2px solid transparent;
-            border-radius: 16px;
+            border-radius: 18px;
             padding: 18px;
             cursor: pointer;
             transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
@@ -177,62 +178,86 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 12px;
+            margin-bottom: 14px;
         }
         .user-info { display: flex; align-items: center; gap: 12px; }
         .avatar {
-            width: 44px; height: 44px;
+            width: 46px; height: 46px;
             background: var(--theme-gradient, linear-gradient(135deg, #ff113a, #88001b));
             border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
-            font-weight: 900; color: #ffffff; font-size: 1.15rem;
+            font-weight: 900; color: #ffffff; font-size: 1.2rem;
             box-shadow: 0 3px 10px rgba(0,0,0,0.5);
             border: 1px solid rgba(255,255,255,0.2);
         }
-        .user-name { font-size: 1.1rem; font-weight: 800; color: white; }
-        .mc-name { font-size: 0.78rem; color: #23a55a; font-weight: bold; margin-top: 2px; }
+        .user-name { font-size: 1.15rem; font-weight: 800; color: white; }
+        .mc-name { font-size: 0.8rem; color: #23a55a; font-weight: bold; margin-top: 2px; }
+        
+        .header-right-badges {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
         .poke-badge {
             font-size: 0.8rem;
             color: #ffffff;
-            background: var(--theme-gradient, linear-gradient(135deg, #ff113a, #88001b));
-            padding: 4px 12px;
+            background: #23a55a;
+            padding: 5px 12px;
             border-radius: 20px;
             font-weight: 800;
             box-shadow: 0 2px 8px rgba(0,0,0,0.3);
         }
 
-        /* 🔥 메인 카드 스타팅 포켓몬 대형 이미지 시각적 강조 🔥 */
-        .card-preview {
-            background: #0a0b0e;
-            padding: 12px 14px;
-            border-radius: 12px;
-            color: #a0a5b1;
-            font-size: 0.85rem;
-            border: 1px solid #1f232d;
+        .starter-badge-top {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            min-height: 65px;
+            gap: 6px;
+            background: rgba(255, 203, 5, 0.12);
+            border: 1.5px solid #ffcb05;
+            padding: 4px 10px;
+            border-radius: 10px;
+            color: #ffcb05;
+            font-size: 0.85rem;
+            font-weight: 800;
+        }
+        .starter-badge-top img {
+            width: 28px;
+            height: 28px;
+            object-fit: contain;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.6));
         }
 
-        .starter-card-highlight {
+        /* 🔥 요청하신 하단 메인 포켓몬 박스 레이아웃 (캐릭터 + 이름 [레벨]) 🔥 */
+        .card-main-poke-box {
+            background: #08090c;
+            border-radius: 14px;
+            padding: 12px 16px;
+            border: 1px solid #222631;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            min-height: 80px;
+        }
+        .poke-char-img {
+            width: 65px;
+            height: 65px;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.8));
+            flex-shrink: 0;
+        }
+        .poke-char-info {
             display: flex;
             align-items: center;
             gap: 8px;
-            background: rgba(255, 203, 5, 0.12);
-            border: 1.5px solid #ffcb05;
-            padding: 5px 12px;
-            border-radius: 10px;
-            color: #ffcb05;
-            font-weight: 800;
-            box-shadow: 0 0 10px rgba(255, 203, 5, 0.2);
+            font-size: 1.15rem;
+            font-weight: 900;
+            color: #ffffff;
+            flex-wrap: wrap;
         }
-        .starter-card-highlight img {
-            width: 46px;
-            height: 46px;
-            object-fit: contain;
-            filter: drop-shadow(0 3px 6px rgba(0,0,0,0.7));
-            transform: scale(1.1);
+        .poke-level-tag {
+            color: #ffcb05;
+            font-size: 1.05rem;
+            font-weight: 800;
         }
 
         /* Commands, Rules, Locations Cards */
@@ -288,12 +313,12 @@
         .btn-mini-edit:hover { background: #e3350d; color: #fff; border-color: #e3350d; }
         .close-btn { background: none; border: none; color: #808592; font-size: 1.3rem; cursor: pointer; }
 
-        /* 🔥 모달 상단 대형 스타팅 포켓몬 하이라이트 배너 🔥 */
+        /* 🔥 모달 상단 스타팅 포켓몬 가로형 배너 🔥 */
         .starter-hero-banner {
             background: linear-gradient(135deg, rgba(255, 203, 5, 0.15) 0%, rgba(227, 53, 13, 0.15) 100%), #0c0d11;
             border: 2px solid #ffcb05;
             border-radius: 16px;
-            padding: 16px 24px;
+            padding: 14px 22px;
             margin-bottom: 20px;
             display: flex;
             align-items: center;
@@ -309,66 +334,56 @@
             color: #ffcb05;
             font-size: 0.8rem;
             font-weight: 900;
-            letter-spacing: 0.5px;
         }
         .starter-hero-text .poke-name-lg {
             color: #ffffff;
-            font-size: 1.6rem;
+            font-size: 1.45rem;
             font-weight: 900;
         }
         .starter-hero-img-lg {
-            width: 85px;
-            height: 85px;
-            object-fit: contain;
-            filter: drop-shadow(0 6px 12px rgba(0,0,0,0.8));
-            transform: scale(1.15);
-        }
-
-        /* 포켓몬 목록 스타일 */
-        .poke-showcase-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-            gap: 14px;
-            max-height: 300px;
-            overflow-y: auto;
-            padding-right: 4px;
-        }
-        .poke-card-item {
-            background: #0c0d11;
-            border: 1px solid #222631;
-            border-radius: 12px;
-            padding: 12px 10px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            transition: all 0.2s;
-        }
-        .poke-card-item:hover {
-            border-color: #ffcb05;
-            transform: translateY(-3px);
-        }
-        .poke-card-img {
             width: 75px;
             height: 75px;
             object-fit: contain;
-            margin-bottom: 6px;
-            filter: drop-shadow(0 3px 6px rgba(0,0,0,0.5));
+            filter: drop-shadow(0 6px 12px rgba(0,0,0,0.8));
         }
-        .poke-card-name {
-            font-weight: 800;
+
+        /* 🔥 모달 내부 포켓몬 목록 (캐릭터 + 이름 [레벨] 대형 리스트) 🔥 */
+        .poke-modal-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            max-height: 320px;
+            overflow-y: auto;
+            padding-right: 4px;
+        }
+        .poke-modal-row {
+            background: #08090c;
+            border: 1px solid #222631;
+            border-radius: 14px;
+            padding: 12px 18px;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            transition: all 0.2s;
+        }
+        .poke-modal-row:hover {
+            border-color: #ffcb05;
+            transform: translateX(4px);
+        }
+        .poke-modal-img {
+            width: 65px;
+            height: 65px;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.7));
+            flex-shrink: 0;
+        }
+        .poke-modal-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.2rem;
+            font-weight: 900;
             color: #ffffff;
-            font-size: 0.9rem;
-            margin-bottom: 4px;
-        }
-        .poke-card-level {
-            background: rgba(227, 53, 13, 0.2);
-            color: #ff4d4d;
-            border: 1px solid rgba(227, 53, 13, 0.4);
-            padding: 2px 8px;
-            border-radius: 10px;
-            font-size: 0.78rem;
-            font-weight: 800;
         }
 
         /* Input Controls */
@@ -510,11 +525,11 @@
                 </div>
             </div>
 
-            <!-- 🔥 대형 스타팅 포켓몬 강조 배너 🔥 -->
+            <!-- 스타팅 포켓몬 대형 배너 -->
             <div id="detailStarterBox" style="display:none;"></div>
 
-            <!-- 보유 포켓몬 카드 리스트 -->
-            <div id="detailList" class="poke-showcase-grid"></div>
+            <!-- 보유 포켓몬 리스트 (캐릭터 + 이름 [레벨]) -->
+            <div id="detailList" class="poke-modal-list"></div>
         </div>
     </div>
 
@@ -709,6 +724,8 @@
                     card.style.setProperty('--theme-shadow', t.shadow);
                     card.style.setProperty('--theme-gradient', t.gradient);
 
+                    const mainPoke = pokemonData.length > 0 ? pokemonData[0] : null;
+
                     card.innerHTML = `
                         <div class="card-header">
                             <div class="user-info">
@@ -718,15 +735,28 @@
                                     ${mcName ? `<div class="mc-name">@${mcName}</div>` : ''}
                                 </div>
                             </div>
-                            <span class="poke-badge">${pokemonData.length} 마리</span>
+                            <!-- 🔥 상단 우측 스타팅 배지 + n마리 뱃지 🔥 -->
+                            <div class="header-right-badges">
+                                ${starter ? `
+                                    <div class="starter-badge-top">
+                                        <img src="${getPokeImgUrl(starter)}" alt="${starter}" onerror="this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png'">
+                                        <span>${starter}</span>
+                                    </div>` : ''}
+                                <span class="poke-badge">${pokemonData.length} 마리</span>
+                            </div>
                         </div>
-                        <div class="card-preview">
-                            <span>${pokemonData.length > 0 ? `대표: ${pokemonData[0].name} (Lv.${pokemonData[0].level})` : '포켓몬 없음'}</span>
-                            ${starter ? `
-                                <div class="starter-card-highlight">
-                                    <img src="${getPokeImgUrl(starter)}" alt="${starter}" onerror="this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png'">
-                                    <span>${starter}</span>
-                                </div>` : ''}
+                        
+                        <!-- 🔥 요청하신 캐릭터(이미지) + 이름 [레벨] 레이아웃 🔥 -->
+                        <div class="card-main-poke-box">
+                            ${mainPoke ? `
+                                <img class="poke-char-img" src="${getPokeImgUrl(mainPoke.name)}" alt="${mainPoke.name}" onerror="this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png'">
+                                <div class="poke-char-info">
+                                    <span>${mainPoke.name}</span>
+                                    <span class="poke-level-tag">[Lv.${mainPoke.level}]</span>
+                                </div>
+                            ` : `
+                                <div style="color:#8a8f9d; font-size:0.9rem; text-align:center; width:100%;">등록된 대표 포켓몬이 없습니다.</div>
+                            `}
                         </div>
                     `;
                     return card;
@@ -746,7 +776,7 @@
             document.getElementById("detailTitle").innerText = `${name}님의 프로필`;
             document.getElementById("detailMcName").innerText = mcName ? `@${mcName}` : '';
 
-            // 🔥 모달 상단 스타팅 포켓몬 대형 배너 하이라이트 🔥
+            // 스타팅 포켓몬 대형 배너
             const starterBox = document.getElementById("detailStarterBox");
             if (starter) {
                 starterBox.style.display = "block";
@@ -763,15 +793,18 @@
                 starterBox.style.display = "none";
             }
 
+            // 🔥 모달 내부 포켓몬 목록 (캐릭터 + 이름 [레벨]) 🔥
             const listDiv = document.getElementById("detailList");
             if (pokemonList.length === 0) {
-                listDiv.innerHTML = `<div style="grid-column:1/-1; color:#8a8f9d; text-align:center; padding:40px 0;">등록된 포켓몬이 없습니다.</div>`;
+                listDiv.innerHTML = `<div style="color:#8a8f9d; text-align:center; padding:40px 0;">등록된 포켓몬이 없습니다.</div>`;
             } else {
                 listDiv.innerHTML = pokemonList.map(p => `
-                    <div class="poke-card-item">
-                        <img class="poke-card-img" src="${getPokeImgUrl(p.name)}" alt="${p.name}" onerror="this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png'">
-                        <div class="poke-card-name">${p.name}</div>
-                        <div class="poke-card-level">Lv.${p.level}</div>
+                    <div class="poke-modal-row">
+                        <img class="poke-modal-img" src="${getPokeImgUrl(p.name)}" alt="${p.name}" onerror="this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png'">
+                        <div class="poke-modal-info">
+                            <span>${p.name}</span>
+                            <span style="color:#ffcb05;">[Lv.${p.level}]</span>
+                        </div>
                     </div>
                 `).join('');
             }
